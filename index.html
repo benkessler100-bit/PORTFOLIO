@@ -220,6 +220,16 @@
   .grid-fashion .fashion-wide { grid-column: span 2; grid-row: span 2; }
   .grid-fashion .fashion-square { grid-row: span 1; }
 
+  .grid-restaurant {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 138px;
+  }
+  .grid-restaurant .restaurant-hero { grid-column: span 3; grid-row: span 2; }
+  .grid-restaurant .restaurant-tall { grid-row: span 2; }
+  .grid-restaurant .restaurant-wide { grid-column: span 2; grid-row: span 1; }
+  .grid-restaurant .restaurant-feature { grid-column: span 2; grid-row: span 2; }
+  .grid-restaurant .restaurant-square { grid-row: span 1; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -450,6 +460,13 @@
     }
     .grid-fashion .fashion-hero { grid-column: span 2; grid-row: span 3; }
     .grid-fashion .fashion-wide { grid-column: span 2; grid-row: span 2; }
+    .grid-restaurant {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 132px;
+    }
+    .grid-restaurant .restaurant-hero { grid-column: span 2; grid-row: span 2; }
+    .grid-restaurant .restaurant-feature { grid-column: span 2; grid-row: span 2; }
+    .grid-restaurant .restaurant-wide { grid-column: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -486,6 +503,18 @@
     .grid-fashion .fashion-wide,
     .grid-fashion .fashion-tall,
     .grid-fashion .fashion-square {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-restaurant {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-restaurant .restaurant-hero,
+    .grid-restaurant .restaurant-feature,
+    .grid-restaurant .restaurant-wide,
+    .grid-restaurant .restaurant-tall,
+    .grid-restaurant .restaurant-square {
       grid-column: auto;
       grid-row: auto;
     }
@@ -687,16 +716,16 @@
     Bar Giora, Saba Edward, Jessica, Massada 31, Oakberry, Be.live.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="lwide"><img src="assets/img/restaurant-pizza/saba-01.jpg" /></div>
-    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-02.jpg" /></div>
-    <div class="l"><img src="assets/img/restaurant-pizza/saba-03.jpg" /></div>
-    <div class="l"><img src="assets/img/restaurant-pizza/saba-04.jpg" /></div>
-    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-03.jpg" /></div>
-    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-04.jpg" /></div>
-    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-05.jpg" /></div>
-    <div class="lwide"><img src="assets/img/restaurant-pizza/saba-05.jpg" /></div>
-    <div class="p"><img src="assets/img/restaurant-pizza/saba-02.jpg" /></div>
+  <div class="grid grid-restaurant">
+    <div class="restaurant-hero"><img src="assets/img/restaurant-pizza/saba-01.jpg" alt="Saba Edward hero pizza overhead" /></div>
+    <div class="restaurant-tall"><img src="assets/img/restaurant-bargiora/bargiora-02.jpg" alt="Bar Giora burger and Corona vertical" /></div>
+    <div class="restaurant-wide"><img src="assets/img/restaurant-pizza/saba-03.jpg" alt="Saba Edward pasta plate on marble" /></div>
+    <div class="restaurant-feature"><img src="assets/img/restaurant-pizza/saba-04.jpg" alt="Saba Edward close-up pasta feature" /></div>
+    <div class="restaurant-tall"><img src="assets/img/restaurant-bargiora/bargiora-03.jpg" alt="Bar Giora burger spread on wooden table" /></div>
+    <div class="restaurant-tall"><img src="assets/img/restaurant-bargiora/bargiora-04.jpg" alt="Bar Giora cocktail and draft detail" /></div>
+    <div class="restaurant-square"><img src="assets/img/restaurant-bargiora/bargiora-05.jpg" alt="Bar Giora beer taps close-up" /></div>
+    <div class="restaurant-square"><img src="assets/img/restaurant-pizza/saba-02.jpg" alt="Saba Edward plated pizza on dark stone" /></div>
+    <div class="restaurant-wide"><img src="assets/img/restaurant-pizza/saba-05.jpg" alt="Saba Edward lemon pasta on marble" /></div>
   </div>
 
   <div class="reels-row">
