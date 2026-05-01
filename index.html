@@ -247,6 +247,14 @@
   .grid-music .music-tall { grid-row: span 2; }
   .grid-music .music-wide { grid-column: span 2; grid-row: span 2; }
 
+  .grid-portrait {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 146px;
+  }
+  .grid-portrait .portrait-hero { grid-column: span 2; grid-row: span 3; }
+  .grid-portrait .portrait-tall { grid-row: span 2; }
+  .grid-portrait .portrait-wide { grid-column: span 2; grid-row: span 2; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -496,6 +504,12 @@
     }
     .grid-music .music-hero { grid-column: span 2; grid-row: span 3; }
     .grid-music .music-wide { grid-column: span 2; grid-row: span 2; }
+    .grid-portrait {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 136px;
+    }
+    .grid-portrait .portrait-hero { grid-column: span 2; grid-row: span 3; }
+    .grid-portrait .portrait-wide { grid-column: span 2; grid-row: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -565,6 +579,16 @@
     .grid-music .music-hero,
     .grid-music .music-tall,
     .grid-music .music-wide {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-portrait {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-portrait .portrait-hero,
+    .grid-portrait .portrait-tall,
+    .grid-portrait .portrait-wide {
       grid-column: auto;
       grid-row: auto;
     }
@@ -907,16 +931,16 @@
     founders, athletes — composed cleanly for whatever crop a magazine throws at it.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="feat"><img src="assets/img/portrait/portrait-09.jpg" /></div>
-    <div class="p"><img src="assets/img/portrait/portrait-01.jpg" /></div>
-    <div class="p"><img src="assets/img/portrait/portrait-05.jpg" /></div>
-    <div class="lmed"><img src="assets/img/portrait/portrait-13.jpg" /></div>
-    <div class="p"><img src="assets/img/portrait/portrait-04.jpg" /></div>
-    <div class="p"><img src="assets/img/portrait/portrait-07.jpg" /></div>
-    <div class="p"><img src="assets/img/portrait/portrait-11.jpg" /></div>
-    <div class="p"><img src="assets/img/portrait/portrait-14.jpg" /></div>
-    <div class="lwide"><img src="assets/img/portrait/portrait-15.jpg" /></div>
+  <div class="grid grid-portrait">
+    <div class="portrait-hero"><img src="assets/img/portrait/portrait-09.jpg" alt="Portrait black and white close-up through frame" /></div>
+    <div class="portrait-tall"><img src="assets/img/portrait/portrait-01.jpg" alt="Studio portrait seated in dark outfit" /></div>
+    <div class="portrait-tall"><img src="assets/img/portrait/portrait-05.jpg" alt="Portrait seated in white polo by window light" /></div>
+    <div class="portrait-tall"><img src="assets/img/portrait/portrait-04.jpg" alt="Portrait profile by curtain light" /></div>
+    <div class="portrait-tall"><img src="assets/img/portrait/portrait-07.jpg" alt="Portrait striped dress seated in chair" /></div>
+    <div class="portrait-wide"><img src="assets/img/portrait/portrait-13.jpg" alt="Editorial portrait stretched across wooden table" /></div>
+    <div class="portrait-tall"><img src="assets/img/portrait/portrait-11.jpg" alt="Portrait legs by window in heels" /></div>
+    <div class="portrait-tall"><img src="assets/img/portrait/portrait-14.jpg" alt="Portrait crouched in dark blazer" /></div>
+    <div class="portrait-wide"><img src="assets/img/portrait/portrait-15.jpg" alt="Editorial portrait reclining under green sofa" /></div>
   </div>
 </section>
 
