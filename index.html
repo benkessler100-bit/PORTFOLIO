@@ -645,16 +645,25 @@
       overflow: visible;
       min-height: 0;
     }
+    .p,
+    .pwide,
+    .pmed,
+    .l,
+    .lmed,
+    .lwide,
+    .lfull,
+    .sq,
+    .feat {
+      grid-column: 1 / -1 !important;
+      grid-row: auto !important;
+      aspect-ratio: auto !important;
+    }
     .grid img {
       width: 100%;
       height: auto;
       object-fit: contain;
       aspect-ratio: auto;
       background: #111;
-    }
-    .l, .lmed, .lwide, .lfull, .feat, .pwide, .sq {
-      grid-column: 1 / -1;
-      aspect-ratio: auto;
     }
     .rail { grid-auto-columns: 86vw; }
     .rail img { height: auto; object-fit: contain; background: #111; }
