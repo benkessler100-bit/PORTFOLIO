@@ -264,6 +264,13 @@
   .grid-racing .racing-banner { grid-column: span 3; grid-row: span 1; }
   .grid-racing .racing-tall { grid-row: span 2; }
 
+  .grid-product {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 176px;
+  }
+  .grid-product .product-square { grid-row: span 1; }
+  .grid-product .product-tall { grid-row: span 2; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -525,6 +532,10 @@
     }
     .grid-racing .racing-hero { grid-column: span 3; grid-row: span 2; }
     .grid-racing .racing-banner { grid-column: span 2; }
+    .grid-product {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 160px;
+    }
   }
 
   @media (max-width: 900px) {
@@ -615,6 +626,15 @@
     .grid-racing .racing-wide,
     .grid-racing .racing-banner,
     .grid-racing .racing-tall {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-product {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-product .product-square,
+    .grid-product .product-tall {
       grid-column: auto;
       grid-row: auto;
     }
@@ -1074,13 +1094,13 @@
     product stills built for menu, e-commerce, and print.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="sq"><img src="assets/img/product/product-01.jpg" /></div>
-    <div class="sq"><img src="assets/img/product/product-02.jpg" /></div>
-    <div class="sq"><img src="assets/img/product/product-04.jpg" /></div>
-    <div class="sq"><img src="assets/img/product/product-05.jpg" /></div>
-    <div class="sq"><img src="assets/img/product/product-06.jpg" /></div>
-    <div class="p"><img src="assets/img/product/product-03.jpg" /></div>
+  <div class="grid grid-product">
+    <div class="product-square"><img src="assets/img/product/product-01.jpg" alt="Rose gold ring product still" /></div>
+    <div class="product-square"><img src="assets/img/product/product-02.jpg" alt="Rose gold bracelet product still" /></div>
+    <div class="product-square"><img src="assets/img/product/product-04.jpg" alt="Silver ring product still" /></div>
+    <div class="product-square"><img src="assets/img/product/product-05.jpg" alt="Rose gold chain bracelet product still" /></div>
+    <div class="product-square"><img src="assets/img/product/product-06.jpg" alt="Rose gold ring angled product still" /></div>
+    <div class="product-tall"><img src="assets/img/product/product-03.jpg" alt="Gold bracelet vertical product still" /></div>
   </div>
 
   <div class="reels-row">
