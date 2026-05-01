@@ -181,18 +181,35 @@
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: 80px;
     grid-auto-flow: dense;
+    margin-top: 30px;
   }
   .grid > * {
     overflow: hidden; border-radius: 2px;
-    transition: filter .3s, transform .5s;
+    transition: filter .3s, transform .45s ease, box-shadow .35s ease;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 18px 38px rgba(0,0,0,0.18);
   }
   .grid img {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
     transition: transform .8s ease;
+    cursor: zoom-in;
+  }
+  .grid > *:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 48px rgba(0,0,0,0.28);
   }
   .grid > *:hover img { transform: scale(1.03); filter: brightness(1.1); }
+
+  .gallery-note {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
 
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
@@ -267,7 +284,16 @@
     scroll-snap-type: x mandatory;
     padding-bottom: 12px;
   }
-  .rail img { width: 100%; height: 380px; object-fit: cover; scroll-snap-align: start; border-radius: 2px; }
+  .rail img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    scroll-snap-align: start;
+    border-radius: 2px;
+    cursor: zoom-in;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 18px 34px rgba(0,0,0,0.2);
+  }
   .rail::-webkit-scrollbar { height: 6px; }
   .rail::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
 
@@ -305,22 +331,87 @@
   }
   .contact-info {
     display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 16px; max-width: 520px; margin: 40px auto 32px;
+    gap: 16px; max-width: 860px; margin: 40px auto 32px;
     font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
     color: var(--muted); text-align: left;
   }
-  .contact-info span strong { color: var(--paper); display: inline-block; width: 90px; font-weight: 500; }
+  .contact-card {
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.03);
+    min-height: 88px;
+  }
+  .contact-card strong {
+    color: var(--paper);
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
   .lets-work {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    padding: 22px 0; margin: 30px auto 0; max-width: 520px;
+    padding: 22px 0; margin: 30px auto 0; max-width: 860px;
     font-family: 'Bebas Neue';
     letter-spacing: 8px; color: var(--paper); font-size: 18px;
+  }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(3,3,3,0.92);
+    z-index: 200;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: min(1200px, 92vw);
+    max-height: 84vh;
+    object-fit: contain;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: var(--paper);
+    padding: 10px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+  }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--muted);
+    letter-spacing: 2px;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
   }
   footer {
     text-align: center; padding: 30px;
     color: var(--muted); font-size: 11px;
     letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  @media (max-width: 1200px) {
+    .grid {
+      grid-template-columns: repeat(8, 1fr);
+      grid-auto-rows: 76px;
+    }
+    .p, .pmed { grid-column: span 2; grid-row: span 4; }
+    .pwide, .sq { grid-column: span 4; grid-row: span 4; }
+    .feat { grid-column: span 4; grid-row: span 5; }
+    .l, .lmed { grid-column: span 4; grid-row: span 3; }
+    .lwide, .lfull { grid-column: span 8; grid-row: span 3; }
   }
 
   @media (max-width: 900px) {
@@ -332,13 +423,39 @@
     .contact-info { grid-template-columns: 1fr; }
     .reel-grid { grid-template-columns: repeat(2, 1fr); }
     .full-banner, .bts { background-attachment: scroll; }
-    /* Collapse smart grid spans on mobile to keep things readable */
-    .grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 70px; }
-    .p, .pmed { grid-column: span 3; grid-row: span 5; }
-    .pwide, .feat { grid-column: span 6; grid-row: span 7; }
-    .l, .lmed { grid-column: span 6; grid-row: span 3; }
-    .lwide, .lfull { grid-column: span 6; grid-row: span 4; }
-    .sq { grid-column: span 3; grid-row: span 3; }
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+      gap: 12px;
+    }
+    .grid > * {
+      grid-column: span 1;
+      grid-row: span 1;
+      aspect-ratio: 4 / 5;
+    }
+    .l, .lmed, .lwide, .lfull, .feat, .pwide {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 10;
+    }
+    .sq { aspect-ratio: 1 / 1; }
+    .rail { grid-auto-columns: minmax(240px, 78vw); }
+    .rail img { height: 320px; }
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 18px; }
+    .hero { padding-top: 110px; }
+    .hero-title { font-size: clamp(72px, 28vw, 138px); }
+    .grid { grid-template-columns: 1fr; }
+    .grid > *,
+    .l, .lmed, .lwide, .lfull, .feat, .pwide {
+      grid-column: 1 / -1;
+      aspect-ratio: 4 / 5;
+    }
+    .reel-grid { grid-template-columns: 1fr; }
+    .reel-card.wide[style] { grid-column: auto !important; }
+    .contact { padding: 80px 18px 50px; }
+    .lightbox { padding: 18px; }
   }
 
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
@@ -436,6 +553,7 @@
     <a href="#travel"     class="hl-card" style="background-image:url('assets/img/travel-japan/japan-11.jpg')"><span>TRAVEL</span></a>
     <a href="#wedding"    class="hl-card" style="background-image:url('assets/img/wedding/wedding-04.jpg')"><span>WEDDING</span></a>
   </div>
+  <p class="gallery-note">Tap or click any still to view it larger.</p>
 </section>
 
 <!-- FASHION — Chicode (mostly portrait) -->
@@ -846,21 +964,80 @@
     that don't fit a category. I read every email — usually within the day.
   </p>
   <div class="contact-info">
-    <span><strong>EMAIL</strong> chen@yoursite.com</span>
-    <span><strong>PHONE</strong> +972 — — — —</span>
-    <span><strong>BASED</strong> Be'er Sheva · On the road</span>
-    <span><strong>SOCIAL</strong> @chenkessler</span>
+    <div class="contact-card"><strong>EMAIL</strong> chen@yoursite.com</div>
+    <div class="contact-card"><strong>PHONE</strong> +972 — — — —</div>
+    <div class="contact-card"><strong>BASED</strong> Be'er Sheva · On the road</div>
+    <div class="contact-card"><strong>SOCIAL</strong> @chenkessler</div>
   </div>
   <div class="lets-work">— LET'S MAKE SOMETHING —</div>
 </section>
 
 <footer>© 2026 — Chen Kessler · Photographer &amp; Videographer · All frames mine</footer>
 
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Close image viewer">Close</button>
+  <img id="lightbox-image" alt="" />
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
 <script>
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.querySelectorAll('img').forEach((img, index) => {
+    if (index > 1) {
+      img.loading = 'lazy';
+      img.decoding = 'async';
+    }
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  const openLightbox = (img) => {
+    lightboxImage.src = img.currentSrc || img.src;
+    lightboxImage.alt = img.alt || 'Portfolio still';
+    lightboxCaption.textContent = img.alt || 'Portfolio still';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImage.removeAttribute('src');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('.grid img, .rail img, .polaroid img').forEach((img) => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  document.querySelectorAll('.reel-card video[muted][loop][playsinline]').forEach((video) => {
+    const playPreview = () => video.play().catch(() => {});
+    const stopPreview = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    video.addEventListener('mouseenter', playPreview);
+    video.addEventListener('mouseleave', stopPreview);
+    video.addEventListener('focus', playPreview);
+    video.addEventListener('blur', stopPreview);
+  });
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox || event.target === lightboxClose) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
 
   document.addEventListener('mousemove', (e) => {
     const p = document.querySelector('.hero .polaroid');
