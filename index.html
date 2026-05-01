@@ -230,6 +230,15 @@
   .grid-restaurant .restaurant-feature { grid-column: span 2; grid-row: span 2; }
   .grid-restaurant .restaurant-square { grid-row: span 1; }
 
+  .grid-nightlife {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 138px;
+  }
+  .grid-nightlife .night-hero { grid-column: span 4; grid-row: span 2; }
+  .grid-nightlife .night-wide { grid-column: span 2; grid-row: span 1; }
+  .grid-nightlife .night-banner { grid-column: span 3; grid-row: span 1; }
+  .grid-nightlife .night-tall { grid-row: span 2; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -467,6 +476,12 @@
     .grid-restaurant .restaurant-hero { grid-column: span 2; grid-row: span 2; }
     .grid-restaurant .restaurant-feature { grid-column: span 2; grid-row: span 2; }
     .grid-restaurant .restaurant-wide { grid-column: span 2; }
+    .grid-nightlife {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 132px;
+    }
+    .grid-nightlife .night-hero { grid-column: span 3; grid-row: span 2; }
+    .grid-nightlife .night-banner { grid-column: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -515,6 +530,17 @@
     .grid-restaurant .restaurant-wide,
     .grid-restaurant .restaurant-tall,
     .grid-restaurant .restaurant-square {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-nightlife {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-nightlife .night-hero,
+    .grid-nightlife .night-wide,
+    .grid-nightlife .night-banner,
+    .grid-nightlife .night-tall {
       grid-column: auto;
       grid-row: auto;
     }
@@ -789,14 +815,14 @@
     Bar Giora floors, brand activations and after-hours launches across Tel Aviv.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="lfull"><img src="assets/img/nightlife/anilevich-04.jpg" /></div>
-    <div class="l"><img src="assets/img/nightlife/anilevich-05.jpg" /></div>
-    <div class="l"><img src="assets/img/nightlife/anilevich-06.jpg" /></div>
-    <div class="p"><img src="assets/img/nightlife/anilevich-01.jpg" /></div>
-    <div class="lwide"><img src="assets/img/nightlife/anilevich-07.jpg" /></div>
-    <div class="l"><img src="assets/img/nightlife/anilevich-08.jpg" /></div>
-    <div class="l"><img src="assets/img/nightlife/anilevich-09.jpg" /></div>
+  <div class="grid grid-nightlife">
+    <div class="night-hero"><img src="assets/img/nightlife/anilevich-04.jpg" alt="Anilevich stage crowd in black and white" /></div>
+    <div class="night-wide"><img src="assets/img/nightlife/anilevich-05.jpg" alt="Anilevich crowd dancing by the barrier" /></div>
+    <div class="night-wide"><img src="assets/img/nightlife/anilevich-06.jpg" alt="Anilevich DJs at the booth" /></div>
+    <div class="night-tall"><img src="assets/img/nightlife/anilevich-01.jpg" alt="Anilevich guest portrait with drink" /></div>
+    <div class="night-banner"><img src="assets/img/nightlife/anilevich-07.jpg" alt="Anilevich cheering crowd in black and white" /></div>
+    <div class="night-wide"><img src="assets/img/nightlife/anilevich-08.jpg" alt="Anilevich performer from behind facing crowd" /></div>
+    <div class="night-wide"><img src="assets/img/nightlife/anilevich-09.jpg" alt="Anilevich overhead dancefloor crowd" /></div>
   </div>
 
   <div class="featured-reel" style="margin-top: 40px; aspect-ratio: 16/9;">
