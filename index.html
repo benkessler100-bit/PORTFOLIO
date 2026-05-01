@@ -343,9 +343,16 @@
   }
   .reel-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(240px, 320px);
     gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
   }
+  .reel-grid::-webkit-scrollbar { height: 6px; }
+  .reel-grid::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+  .reel-grid[style] { grid-template-columns: none !important; }
   .reel-card {
     aspect-ratio: 9/16;
     background: #000;
@@ -353,8 +360,11 @@
     overflow: hidden;
     position: relative;
     cursor: zoom-in;
+    scroll-snap-align: start;
   }
   .reel-card.wide { aspect-ratio: 16/9; }
+  .reel-grid .reel-card[style] { grid-column: auto !important; }
+  .reel-grid .reel-card.wide { width: min(72vw, 560px); }
   .reel-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .reel-card .label {
     position: absolute; left: 0; right: 0; bottom: 0;
@@ -616,7 +626,7 @@
     .highlights-grid { grid-template-columns: 1fr; }
     .grid-content, .grid-content.flip { grid-template-columns: 1fr; gap: 30px; }
     .contact-info { grid-template-columns: 1fr; }
-    .reel-grid { grid-template-columns: 1fr; }
+    .reel-grid { grid-auto-columns: minmax(220px, 72vw); }
     .reel-card,
     .reel-card.wide,
     .featured-reel,
@@ -800,6 +810,7 @@
     .hero-banner { height: 180px; }
     .lede { font-size: 13px; line-height: 1.65; }
     .grid > * { background: rgba(255,255,255,0.02); }
+    .reel-grid { grid-auto-columns: 84vw; }
     .rail { grid-auto-columns: 88vw; }
     .contact h2 { font-size: clamp(56px, 20vw, 96px); }
     .contact-card { padding: 16px; min-height: 0; }
