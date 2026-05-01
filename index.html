@@ -755,7 +755,17 @@
     .grid > *,
     .l, .lmed, .lwide, .lfull, .feat, .pwide {
       grid-column: 1 / -1;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: auto;
+    }
+    .grid > * {
+      background: rgba(255,255,255,0.02);
+      min-height: 0;
+    }
+    .grid img {
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+      background: #111;
     }
     .reel-grid { grid-template-columns: 1fr; }
     .reel-card,
