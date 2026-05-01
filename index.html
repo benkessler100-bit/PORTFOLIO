@@ -51,9 +51,38 @@
     transition: color .25s;
   }
   nav a:hover { color: var(--paper); }
+  .topbar-scroll {
+    position: fixed;
+    top: 57px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 20px 12px;
+    background: rgba(10,10,10,0.78);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: none;
+  }
+  .topbar-scroll::-webkit-scrollbar { display: none; }
+  .topbar-scroll a {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.03);
+  }
+  .topbar-scroll a:hover { color: var(--paper); border-color: rgba(255,255,255,0.18); }
   .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
-  .hero { padding-top: 130px; padding-bottom: 40px; position: relative; }
+  .hero { padding-top: 176px; padding-bottom: 40px; position: relative; }
+  header[id], section[id], div[id] { scroll-margin-top: 128px; }
   .hero-title {
     font-family: 'Bebas Neue';
     font-size: clamp(80px, 18vw, 240px);
@@ -557,9 +586,14 @@
   @media (max-width: 900px) {
     nav { padding: 14px 20px; }
     nav ul { display: none; }
+    .topbar-scroll {
+      top: 49px;
+      padding: 8px 14px 10px;
+      gap: 8px;
+    }
     nav .brand { font-size: 16px; letter-spacing: 3px; }
     .sec { padding: 56px 0; }
-    .hero { padding-bottom: 24px; }
+    .hero { padding-top: 156px; padding-bottom: 24px; }
     .hero-row { gap: 20px; }
     .hero-meta {
       gap: 16px;
@@ -695,8 +729,17 @@
     .wrap { padding: 0 18px; }
     nav { padding: 12px 14px; }
     nav .brand { font-size: 14px; letter-spacing: 2.5px; }
+    .topbar-scroll {
+      top: 43px;
+      padding: 8px 10px 10px;
+    }
+    .topbar-scroll a {
+      padding: 7px 10px;
+      font-size: 9px;
+      letter-spacing: 1.6px;
+    }
     .sec { padding: 46px 0; }
-    .hero { padding-top: 110px; }
+    .hero { padding-top: 144px; }
     .hero-title { font-size: clamp(72px, 28vw, 138px); }
     .hero-row { align-items: flex-start; }
     .hero-meta {
@@ -747,7 +790,7 @@
 <div class="silk"></div>
 
 <nav>
-  <div class="brand">CHEN · KESSLER</div>
+  <a class="brand" href="#top">CHEN · KESSLER</a>
   <ul>
     <li><a href="#showreel">Showreel</a></li>
     <li><a href="#fashion">Fashion</a></li>
@@ -761,8 +804,23 @@
   </ul>
 </nav>
 
+<div class="topbar-scroll" aria-label="Quick navigation">
+  <a href="#top">Top</a>
+  <a href="#showreel">Showreel</a>
+  <a href="#fashion">Fashion</a>
+  <a href="#restaurant">Restaurant</a>
+  <a href="#nightlife">Nightlife</a>
+  <a href="#music">Music</a>
+  <a href="#portrait">Portrait</a>
+  <a href="#racing">Racing</a>
+  <a href="#travel">Travel</a>
+  <a href="#product">Product</a>
+  <a href="#wedding">Wedding</a>
+  <a href="#contact">Contact</a>
+</div>
+
 <!-- HERO -->
-<header class="hero wrap">
+<header class="hero wrap" id="top">
   <div class="hero-row">
     <h1 class="hero-title">PORT<br>FOLIO</h1>
     <div class="polaroid">
