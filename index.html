@@ -82,7 +82,7 @@
   .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
   .hero { padding-top: 176px; padding-bottom: 40px; position: relative; }
-  header[id], section[id], div[id] { scroll-margin-top: 128px; }
+  header[id], section[id], div[id] { scroll-margin-top: 152px; }
   .hero-title {
     font-family: 'Bebas Neue';
     font-size: clamp(80px, 18vw, 240px);
@@ -826,8 +826,8 @@
     }
   }
 
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
