@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PORTFOLIO — Photographer & Videographer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --paper: #f4ede1;
+    --ink: #e9e4d8;
+    --muted: #8c8676;
+    --accent: #d8c89a;
+    --line: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(216,200,154,0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(216,200,154,0.03), transparent 50%);
+  }
+  .silk {
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 6px),
+      radial-gradient(ellipse at 50% 50%, #1a1814 0%, #050505 80%);
+    pointer-events: none;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 36px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(12px);
+    background: rgba(10,10,10,0.55);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .brand { font-family: 'Bebas Neue'; letter-spacing: 4px; font-size: 18px; color: var(--paper); }
+  nav ul { list-style: none; display: flex; gap: 22px; flex-wrap: wrap; }
+  nav a {
+    color: var(--muted); text-decoration: none;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color .25s;
+  }
+  nav a:hover { color: var(--paper); }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  .hero { padding-top: 130px; padding-bottom: 40px; position: relative; }
+  .hero-title {
+    font-family: 'Bebas Neue';
+    font-size: clamp(80px, 18vw, 240px);
+    line-height: 0.85;
+    letter-spacing: -2px;
+    color: var(--paper);
+  }
+  .hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; }
+  .hero-meta {
+    display: flex; gap: 28px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); margin-top: 18px; flex-wrap: wrap;
+  }
+  .hero-meta span strong { color: var(--paper); display: block; margin-bottom: 4px; font-weight: 500; }
+
+  .polaroid {
+    background: var(--paper);
+    padding: 12px 12px 36px 12px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 5px 15px rgba(0,0,0,0.4);
+    transform: rotate(2.5deg);
+    transition: transform .4s ease;
+  }
+  .polaroid:hover { transform: rotate(0) scale(1.03); }
+  .polaroid img {
+    width: 240px; height: 320px;
+    object-fit: cover; display: block;
+    object-position: center 35%;
+    filter: contrast(1.05);
+  }
+  .polaroid .cap {
+    color: #2a241b;
+    font-family: 'Permanent Marker';
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+
+  .hero-banner {
+    margin-top: 30px;
+    height: 280px;
+    background-size: cover;
+    background-position: center 40%;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-banner::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.7));
+  }
+
+  .sec { padding: 80px 0; position: relative; }
+  .sec h2 {
+    font-family: 'Bebas Neue';
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.9; letter-spacing: 2px;
+    color: var(--paper); margin-bottom: 24px;
+  }
+  .sec h2 em {
+    font-family: 'Cormorant Garamond';
+    font-style: italic; font-weight: 400;
+    color: var(--accent);
+    font-size: 0.55em; letter-spacing: 0;
+  }
+  .lede { color: var(--muted); max-width: 580px; line-height: 1.7; font-size: 14px; margin-bottom: 18px; }
+  .meta-block { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .meta-block strong {
+    display: block; color: var(--paper);
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-block p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .signature { font-family: 'Permanent Marker'; color: var(--accent); font-size: 22px; margin-top: 22px; opacity: 0.75; }
+
+  /* WHO I AM */
+  .who { display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: center; }
+  .who .polaroid { transform: rotate(-3deg); }
+  .who .polaroid img { width: 300px; height: 380px; }
+  .who-meta {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 28px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .who-meta div { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .who-meta div strong { color: var(--paper); display: block; margin-bottom: 4px; font-weight: 500; }
+
+  /* HIGHLIGHTS */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px; margin-top: 20px;
+  }
+  .hl-card {
+    aspect-ratio: 4/3;
+    background-size: cover; background-position: center;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    border: 6px solid var(--paper);
+    transition: transform .35s ease;
+    text-decoration: none;
+  }
+  .hl-card:hover { transform: translateY(-6px); }
+  .hl-card span {
+    position: absolute; bottom: 8px; left: 0; right: 0;
+    text-align: center;
+    color: #2a241b; background: var(--paper);
+    margin: 0 -6px -6px; padding: 8px 0;
+    font-family: 'Bebas Neue';
+    letter-spacing: 4px; font-size: 13px;
+  }
+
+  /* SMART GRID
+     12-col layout, 80px row height. Spans match orientation:
+     .p (portrait): span 3 col × 5 row  → 1 : 1.67
+     .pwide (portrait big):  span 4 col × 6 row → 1 : 1.5
+     .l (landscape): span 6 col × 3 row → 2 : 1
+     .lwide (wide L): span 8 col × 3 row → 2.67 : 1
+     .lfull (full bleed):   span 12 col × 4 row → 3 : 1
+     .sq (square):  span 4 col × 4 row → 1 : 1
+     .feat (hero):  span 6 col × 6 row → 1 : 1
+  */
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 80px;
+    grid-auto-flow: dense;
+  }
+  .grid > * {
+    overflow: hidden; border-radius: 2px;
+    transition: filter .3s, transform .5s;
+  }
+  .grid img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .8s ease;
+  }
+  .grid > *:hover img { transform: scale(1.03); filter: brightness(1.1); }
+
+  .p     { grid-column: span 3; grid-row: span 5; }
+  .pwide { grid-column: span 4; grid-row: span 6; }
+  .l     { grid-column: span 6; grid-row: span 3; }
+  .lwide { grid-column: span 8; grid-row: span 3; }
+  .lfull { grid-column: span 12; grid-row: span 4; }
+  .sq    { grid-column: span 4; grid-row: span 4; }
+  .feat  { grid-column: span 6; grid-row: span 6; }
+  .pmed  { grid-column: span 3; grid-row: span 4; }
+  .lmed  { grid-column: span 6; grid-row: span 4; }
+
+  /* object-position helpers */
+  .top    img { object-position: center top; }
+  .bottom img { object-position: center bottom; }
+  .face   img { object-position: center 30%; }
+
+  .grid-content {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 50px; align-items: start;
+  }
+  .grid-content.flip { grid-template-columns: 1.4fr 1fr; }
+  .text-col h2 { margin-bottom: 16px; }
+
+  /* REELS */
+  .reels-row { margin-top: 24px; }
+  .reels-row h3 {
+    font-family: 'Bebas Neue';
+    letter-spacing: 5px;
+    color: var(--accent);
+    font-size: 14px;
+    margin: 30px 0 14px;
+  }
+  .reel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .reel-card {
+    aspect-ratio: 9/16;
+    background: #000;
+    border: 4px solid var(--paper);
+    overflow: hidden;
+    position: relative;
+  }
+  .reel-card.wide { aspect-ratio: 16/9; }
+  .reel-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .reel-card .label {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: var(--paper);
+    padding: 14px;
+    font-family: 'Bebas Neue';
+    letter-spacing: 3px; font-size: 12px;
+    pointer-events: none;
+  }
+  .featured-reel {
+    margin-top: 30px;
+    border: 6px solid var(--paper);
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+  }
+  .featured-reel video { width: 100%; height: 100%; object-fit: cover; }
+
+  /* travel rail */
+  .rail {
+    display: grid; grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 1fr);
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+  }
+  .rail img { width: 100%; height: 380px; object-fit: cover; scroll-snap-align: start; border-radius: 2px; }
+  .rail::-webkit-scrollbar { height: 6px; }
+  .rail::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+
+  .full-banner {
+    margin: 60px 0 0;
+    height: 60vh; min-height: 360px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .bts {
+    position: relative; text-align: center;
+    padding: 100px 32px;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                url('assets/img/portrait/portrait-09.jpg');
+    background-size: cover; background-position: center;
+    background-attachment: fixed;
+  }
+  .bts h2 { font-family: 'Bebas Neue'; font-size: clamp(48px, 7vw, 80px); color: var(--paper); letter-spacing: 6px; margin-bottom: 20px; }
+  .bts p { max-width: 600px; margin: 0 auto; color: var(--ink); line-height: 1.8; font-size: 15px; }
+
+  .contact { padding: 100px 32px 60px; text-align: center; }
+  .contact h2 {
+    font-family: 'Bebas Neue';
+    font-size: clamp(80px, 14vw, 180px);
+    line-height: 0.9; color: var(--paper);
+    letter-spacing: 2px;
+  }
+  .contact h2 em {
+    font-family: 'Cormorant Garamond';
+    font-style: italic; font-weight: 400;
+    color: var(--accent);
+    font-size: 0.5em; letter-spacing: 0;
+  }
+  .contact-info {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; max-width: 520px; margin: 40px auto 32px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); text-align: left;
+  }
+  .contact-info span strong { color: var(--paper); display: inline-block; width: 90px; font-weight: 500; }
+  .lets-work {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0; margin: 30px auto 0; max-width: 520px;
+    font-family: 'Bebas Neue';
+    letter-spacing: 8px; color: var(--paper); font-size: 18px;
+  }
+  footer {
+    text-align: center; padding: 30px;
+    color: var(--muted); font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    nav ul { display: none; }
+    .who { grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center; }
+    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+    .grid-content, .grid-content.flip { grid-template-columns: 1fr; gap: 30px; }
+    .contact-info { grid-template-columns: 1fr; }
+    .reel-grid { grid-template-columns: repeat(2, 1fr); }
+    .full-banner, .bts { background-attachment: scroll; }
+    /* Collapse smart grid spans on mobile to keep things readable */
+    .grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 70px; }
+    .p, .pmed { grid-column: span 3; grid-row: span 5; }
+    .pwide, .feat { grid-column: span 6; grid-row: span 7; }
+    .l, .lmed { grid-column: span 6; grid-row: span 3; }
+    .lwide, .lfull { grid-column: span 6; grid-row: span 4; }
+    .sq { grid-column: span 3; grid-row: span 3; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div class="silk"></div>
+
+<nav>
+  <div class="brand">CHEN · KESSLER</div>
+  <ul>
+    <li><a href="#showreel">Showreel</a></li>
+    <li><a href="#fashion">Fashion</a></li>
+    <li><a href="#restaurant">Restaurant</a></li>
+    <li><a href="#nightlife">Nightlife</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#racing">Racing</a></li>
+    <li><a href="#travel">Travel</a></li>
+    <li><a href="#wedding">Wedding</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero wrap">
+  <div class="hero-row">
+    <h1 class="hero-title">PORT<br>FOLIO</h1>
+    <div class="polaroid">
+      <img src="assets/img/me.jpg" alt="me" />
+      <div class="cap">that's me</div>
+    </div>
+  </div>
+  <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-top:30px;">
+    <div style="font-family:'Cormorant Garamond'; font-style:italic; color:var(--accent); font-size:22px;">
+      Stories told in light &amp; motion.
+    </div>
+    <div class="hero-meta">
+      <span><strong>2026</strong>Edition</span>
+      <span><strong>Vol. 01</strong>Selected Works</span>
+      <span><strong>Be'er Sheva</strong>+ on the road</span>
+    </div>
+  </div>
+  <div class="hero-banner" style="background-image:url('assets/img/racing/racing-06.jpg');"></div>
+</header>
+
+<!-- WHO I AM -->
+<section class="sec wrap reveal" id="who">
+  <div class="who">
+    <div class="polaroid">
+      <img src="assets/img/me.jpg" alt="portrait" />
+      <div class="cap">it's me</div>
+    </div>
+    <div>
+      <h2>WHO I AM <em>— a short story</em></h2>
+      <p class="lede">
+        I'm Chen — a photographer and videographer based in Be'er Sheva, with a passport that
+        doesn't sit still. My week is split between the kitchens, dance floors, studios, and
+        racetracks of Israel — and the months a year I spend somewhere I don't speak the language.
+      </p>
+      <p class="lede">
+        Plates, faces, motion, light. I shoot what'll outlive the moment. Selected work:
+        brand films for Chicode and Viacci · restaurant content for Bar Giora &amp;
+        Saba Edward · the Petzael × Sparco track-day aftermovie · a music video
+        for Maya Singer · a long-form Asia documentary still in the edit.
+      </p>
+      <div class="who-meta">
+        <div><strong>BASED IN</strong>Be'er Sheva · Asia · Anywhere</div>
+        <div><strong>FORMAT</strong>Photo · Film · Aerial</div>
+        <div><strong>KIT</strong>Sony FX3 · A7 IV · DJI Mavic 4 Pro</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWREEL -->
+<section class="sec wrap reveal" id="showreel">
+  <h2>SHOW <em>reel</em></h2>
+  <p class="lede">Two minutes of recent work — restaurants, nightlife, fashion, music, motorsport. Sound on.</p>
+  <div class="featured-reel">
+    <video src="assets/video/showreel.mp4" controls preload="metadata" poster="assets/img/fashion-chicode/chicode-22.jpg"></video>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="sec wrap reveal" id="highlights">
+  <h2>PORTFOLIO<br>HIGHLIGHTS</h2>
+  <div class="highlights-grid">
+    <a href="#fashion"    class="hl-card" style="background-image:url('assets/img/fashion-chicode/chicode-12.jpg')"><span>FASHION</span></a>
+    <a href="#restaurant" class="hl-card" style="background-image:url('assets/img/restaurant-pizza/saba-04.jpg')"><span>RESTAURANT</span></a>
+    <a href="#nightlife"  class="hl-card" style="background-image:url('assets/img/nightlife/anilevich-04.jpg')"><span>NIGHTLIFE</span></a>
+    <a href="#portrait"   class="hl-card" style="background-image:url('assets/img/portrait/portrait-13.jpg')"><span>PORTRAIT</span></a>
+    <a href="#music"      class="hl-card" style="background-image:url('assets/img/music/maya-05.jpg')"><span>MUSIC</span></a>
+    <a href="#racing"     class="hl-card" style="background-image:url('assets/img/racing/racing-06.jpg')"><span>RACING</span></a>
+    <a href="#travel"     class="hl-card" style="background-image:url('assets/img/travel-japan/japan-11.jpg')"><span>TRAVEL</span></a>
+    <a href="#wedding"    class="hl-card" style="background-image:url('assets/img/wedding/wedding-04.jpg')"><span>WEDDING</span></a>
+  </div>
+</section>
+
+<!-- FASHION — Chicode (mostly portrait) -->
+<section class="sec wrap reveal" id="fashion">
+  <h2>FASHION</h2>
+  <p class="lede">
+    Two seasons with Chicode. One generative-AI brand film for Viacci. Stills built to hold
+    at print scale, motion cut to loop cleanly on stories. Below — campaign frames, micro-reels,
+    and the AI work.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="feat"><img src="assets/img/fashion-chicode/chicode-12.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-04.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-08.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-19.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-22.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-27.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-31.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-35.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-38.jpg" /></div>
+    <div class="lwide"><img src="assets/img/fashion-chicode/chicode-43.jpg" /></div>
+    <div class="p"><img src="assets/img/fashion-chicode/chicode-15.jpg" /></div>
+  </div>
+
+  <div class="reels-row">
+    <h3>— FASHION FILMS —</h3>
+    <div class="reel-grid">
+      <div class="reel-card wide" style="grid-column: span 3; aspect-ratio: 16/9;">
+        <video src="assets/video/viacci-2.mp4" controls preload="metadata"></video>
+        <div class="label">VIACCI · Brand Film</div>
+      </div>
+      <div class="reel-card wide">
+        <video src="assets/video/viacci-1.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">VIACCI · Teaser</div>
+      </div>
+      <div class="reel-card wide">
+        <video src="assets/video/chicode-ai-1.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · Generative Lookbook I</div>
+      </div>
+      <div class="reel-card wide">
+        <video src="assets/video/chicode-ai-2.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · Generative Lookbook II</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/chicode-running.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · On The Run</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/chicode-stairs.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · Stairwell Cut</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/chicode-car-ride.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · City Drive</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/chicode-bag.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · Bag Story</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/chicode-micro-1.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">CHICODE · Micro Reel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANT — Saba (L) + Bar Giora (P) -->
+<section class="sec wrap reveal" id="restaurant">
+  <h2>RESTAURANT <em>— Bar Giora · Saba Edward</em></h2>
+  <p class="lede">
+    Plates that earn the first bite. Cocktails loud enough on mute. Monthly menu shoots,
+    signature reels, and full brand campaigns for some of Tel Aviv's busiest dining rooms —
+    Bar Giora, Saba Edward, Jessica, Massada 31, Oakberry, Be.live.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="lwide"><img src="assets/img/restaurant-pizza/saba-01.jpg" /></div>
+    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-02.jpg" /></div>
+    <div class="l"><img src="assets/img/restaurant-pizza/saba-03.jpg" /></div>
+    <div class="l"><img src="assets/img/restaurant-pizza/saba-04.jpg" /></div>
+    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-03.jpg" /></div>
+    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-04.jpg" /></div>
+    <div class="p"><img src="assets/img/restaurant-bargiora/bargiora-05.jpg" /></div>
+    <div class="lwide"><img src="assets/img/restaurant-pizza/saba-05.jpg" /></div>
+    <div class="p"><img src="assets/img/restaurant-pizza/saba-02.jpg" /></div>
+  </div>
+
+  <div class="reels-row">
+    <h3>— FOOD &amp; DRINK FILMS —</h3>
+    <div class="reel-grid">
+      <div class="reel-card">
+        <video src="assets/video/saba-edwards.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">SABA EDWARD · Signature Pizza</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/bargiora-reel.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">BAR GIORA · House Reel</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/bargiora-hatzil.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">BAR GIORA · Eggplant Plate</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/bargiora-burger.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">BAR GIORA · Burger Drop</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/bargiora-cocktail-1.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">BAR GIORA · Cocktail Pour I</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/bargiora-cocktail-2.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">BAR GIORA · Cocktail Pour II</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/jessica-love.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">JESSICA · So This Is Love</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/jessica-roger.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">JESSICA · Roger Cocktail</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/oakberry.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">OAKBERRY · Brand Spot</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NIGHTLIFE — Anilevich (mostly L) -->
+<section class="sec wrap reveal" id="nightlife">
+  <h2>NIGHTLIFE <em>— Anilevich Street Party</em></h2>
+  <p class="lede">
+    Shot to remember the room the next morning, not for the press release.
+    Sweat. Smoke. Bass. People who came to be there — Anilevich Street Party,
+    Bar Giora floors, brand activations and after-hours launches across Tel Aviv.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="lfull"><img src="assets/img/nightlife/anilevich-04.jpg" /></div>
+    <div class="l"><img src="assets/img/nightlife/anilevich-05.jpg" /></div>
+    <div class="l"><img src="assets/img/nightlife/anilevich-06.jpg" /></div>
+    <div class="p"><img src="assets/img/nightlife/anilevich-01.jpg" /></div>
+    <div class="lwide"><img src="assets/img/nightlife/anilevich-07.jpg" /></div>
+    <div class="l"><img src="assets/img/nightlife/anilevich-08.jpg" /></div>
+    <div class="l"><img src="assets/img/nightlife/anilevich-09.jpg" /></div>
+  </div>
+
+  <div class="featured-reel" style="margin-top: 40px; aspect-ratio: 16/9;">
+    <video src="assets/video/anilevich.mp4" controls preload="metadata" poster="assets/img/nightlife/anilevich-04.jpg"></video>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div class="full-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/racing/racing-12.jpg');"></div>
+
+<!-- MUSIC — Maya Singer (all P) -->
+<section class="sec wrap reveal" id="music">
+  <h2>MUSIC <em>— Maya Singer · "Dirty Laundry"</em></h2>
+  <p class="lede">
+    A studio session and music video for Maya Singer's "Dirty Laundry" — press stills,
+    a color-graded music video, vertical social cuts, and a Moonlighting cinematic short.
+    The kind of shoot where you let the song run the room and follow.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="pwide"><img src="assets/img/music/maya-05.jpg" /></div>
+    <div class="p"><img src="assets/img/music/maya-02.jpg" /></div>
+    <div class="p"><img src="assets/img/music/maya-04.jpg" /></div>
+    <div class="p"><img src="assets/img/music/maya-07.jpg" /></div>
+    <div class="p"><img src="assets/img/music/maya-09.jpg" /></div>
+    <div class="p"><img src="assets/img/music/maya-03.jpg" /></div>
+    <div class="p"><img src="assets/img/music/maya-08.jpg" /></div>
+  </div>
+
+  <div class="reels-row">
+    <h3>— MUSIC FILMS —</h3>
+    <div class="reel-grid">
+      <div class="reel-card">
+        <video src="assets/video/maya-1.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">MAYA SINGER · Dirty Laundry (V1)</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/maya-reel-2.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">MAYA SINGER · Vertical Cut</div>
+      </div>
+      <div class="reel-card">
+        <video src="assets/video/moonlighting.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">MOONLIGHTING · Cinematic Short</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTRAIT — Maya stills + Ron Sabri (mostly P) -->
+<section class="sec wrap reveal" id="portrait">
+  <h2>PORTRAIT <em>— Studio · EPK · Press</em></h2>
+  <p class="lede">
+    Stripped-down studio portraits — clean light, real expressions. EPKs, press kits,
+    album covers — frames where the face has to do everything. Recent subjects: musicians,
+    founders, athletes — composed cleanly for whatever crop a magazine throws at it.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="feat"><img src="assets/img/portrait/portrait-09.jpg" /></div>
+    <div class="p"><img src="assets/img/portrait/portrait-01.jpg" /></div>
+    <div class="p"><img src="assets/img/portrait/portrait-05.jpg" /></div>
+    <div class="lmed"><img src="assets/img/portrait/portrait-13.jpg" /></div>
+    <div class="p"><img src="assets/img/portrait/portrait-04.jpg" /></div>
+    <div class="p"><img src="assets/img/portrait/portrait-07.jpg" /></div>
+    <div class="p"><img src="assets/img/portrait/portrait-11.jpg" /></div>
+    <div class="p"><img src="assets/img/portrait/portrait-14.jpg" /></div>
+    <div class="lwide"><img src="assets/img/portrait/portrait-15.jpg" /></div>
+  </div>
+</section>
+
+<!-- RACING — Petzael Sparco (almost all L) -->
+<section class="sec wrap reveal" id="racing">
+  <h2>RACING <em>— Petzael × Sparco</em></h2>
+  <p class="lede">
+    Pit lane to chequered flag with Petzael × Sparco. Fifteen selected stills and a full
+    cinematic aftermovie. The kind of shoot where you live in a corner all day, panning the
+    same apex, waiting for the right car to come through with the light dropping just so.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="lfull"><img src="assets/img/racing/racing-06.jpg" /></div>
+    <div class="l"><img src="assets/img/racing/racing-02.jpg" /></div>
+    <div class="l"><img src="assets/img/racing/racing-04.jpg" /></div>
+    <div class="lwide"><img src="assets/img/racing/racing-08.jpg" /></div>
+    <div class="p"><img src="assets/img/racing/racing-01.jpg" /></div>
+    <div class="l"><img src="assets/img/racing/racing-10.jpg" /></div>
+    <div class="l"><img src="assets/img/racing/racing-12.jpg" /></div>
+    <div class="lfull"><img src="assets/img/racing/racing-15.jpg" /></div>
+  </div>
+
+  <div class="featured-reel" style="margin-top: 40px;">
+    <video src="assets/video/sparco-aftermovie.mp4" controls preload="metadata" poster="assets/img/racing/racing-12.jpg"></video>
+  </div>
+</section>
+
+<!-- TRAVEL — many countries, use rails -->
+<section class="sec wrap reveal" id="travel" style="text-align:center;">
+  <h2 style="text-align:center;">TRAVEL <em>— Asia &amp; the Desert</em></h2>
+  <p class="lede" style="margin: 0 auto 20px; text-align:center;">
+    Eight months on the road across Asia in 2024 — Japan, India, Mongolia, Vietnam, Nepal,
+    Laos, Thailand, Taiwan. Plus the deserts of Mizpe Ramon back home, and a side-quest
+    into Japanese kei cars that turned into its own mini-series.
+  </p>
+
+  <h3 style="font-family:'Bebas Neue'; letter-spacing:5px; color:var(--accent); font-size:14px; margin: 40px 0 4px;">JAPAN</h3>
+  <p style="color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;">Kyoto · Tokyo · Mt. Fuji · Hiroshima · Nara · the Japanese Alps</p>
+  <div class="rail">
+    <img src="assets/img/travel-japan/japan-07.jpg" />
+    <img src="assets/img/travel-japan/japan-11.jpg" />
+    <img src="assets/img/travel-japan/japan-12.jpg" />
+    <img src="assets/img/travel-japan/japan-14.jpg" />
+    <img src="assets/img/travel-japan/japan-16.jpg" />
+    <img src="assets/img/travel-japan/japan-18.jpg" />
+    <img src="assets/img/travel-japan/japan-23.jpg" />
+    <img src="assets/img/travel-japan/japan-08.jpg" />
+    <img src="assets/img/travel-japan/japan-15.jpg" />
+  </div>
+
+  <h3 style="font-family:'Bebas Neue'; letter-spacing:5px; color:var(--accent); font-size:14px; margin: 40px 0 4px;">JAPAN · CARS</h3>
+  <p style="color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;">Daikoku PA · Tatsumi · the side-quest that became a series</p>
+  <div class="rail">
+    <img src="assets/img/travel-japan-cars/jcars-04.jpg" />
+    <img src="assets/img/travel-japan-cars/jcars-08.jpg" />
+    <img src="assets/img/travel-japan-cars/jcars-11.jpg" />
+    <img src="assets/img/travel-japan-cars/jcars-14.jpg" />
+    <img src="assets/img/travel-japan-cars/jcars-17.jpg" />
+    <img src="assets/img/travel-japan-cars/jcars-19.jpg" />
+  </div>
+
+  <h3 style="font-family:'Bebas Neue'; letter-spacing:5px; color:var(--accent); font-size:14px; margin: 40px 0 4px;">INDIA</h3>
+  <p style="color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;">Hampi · Pushkar · jewelry, dust, and the Niki shoot</p>
+  <div class="rail">
+    <img src="assets/img/travel-india/india-03.jpg" />
+    <img src="assets/img/travel-india/india-06.jpg" />
+    <img src="assets/img/travel-india/india-09.jpg" />
+    <img src="assets/img/travel-india/india-10.jpg" />
+    <img src="assets/img/travel-india/india-02.jpg" />
+    <img src="assets/img/travel-india/india-08.jpg" />
+  </div>
+
+  <h3 style="font-family:'Bebas Neue'; letter-spacing:5px; color:var(--accent); font-size:14px; margin: 40px 0 4px;">MONGOLIA</h3>
+  <p style="color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;">Gobi · Northern lakes · Western steppe · Ulaanbaatar</p>
+  <div class="rail">
+    <img src="assets/img/travel-mongolia/mongolia-01.jpg" />
+    <img src="assets/img/travel-mongolia/mongolia-04.jpg" />
+    <img src="assets/img/travel-mongolia/mongolia-06.jpg" />
+    <img src="assets/img/travel-mongolia/mongolia-09.jpg" />
+    <img src="assets/img/travel-mongolia/mongolia-03.jpg" />
+  </div>
+
+  <h3 style="font-family:'Bebas Neue'; letter-spacing:5px; color:var(--accent); font-size:14px; margin: 40px 0 4px;">MIZPE RAMON</h3>
+  <p style="color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;">June 2025 · the Negev crater at first light</p>
+  <div class="rail">
+    <img src="assets/img/travel-mitzpe/mitzpe-01.jpg" />
+    <img src="assets/img/travel-mitzpe/mitzpe-03.jpg" />
+    <img src="assets/img/travel-mitzpe/mitzpe-05.jpg" />
+    <img src="assets/img/travel-mitzpe/mitzpe-07.jpg" />
+    <img src="assets/img/travel-mitzpe/mitzpe-09.jpg" />
+  </div>
+
+  <div class="featured-reel" style="margin-top: 40px;">
+    <video src="assets/video/travel-flowers.mp4" controls preload="metadata" poster="assets/img/travel-mitzpe/mitzpe-06.jpg"></video>
+  </div>
+</section>
+
+<!-- PRODUCT + BUSINESS (squares) -->
+<section class="sec wrap reveal" id="product">
+  <h2>PRODUCT <em>+ BUSINESS</em></h2>
+  <p class="lede">
+    Studio product work and small-business brand films. Considered photography paired with
+    brand-ready short films — recent: the Yoel × Barber pro-bono campaign, plus editorial
+    product stills built for menu, e-commerce, and print.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="sq"><img src="assets/img/product/product-01.jpg" /></div>
+    <div class="sq"><img src="assets/img/product/product-02.jpg" /></div>
+    <div class="sq"><img src="assets/img/product/product-04.jpg" /></div>
+    <div class="sq"><img src="assets/img/product/product-05.jpg" /></div>
+    <div class="sq"><img src="assets/img/product/product-06.jpg" /></div>
+    <div class="p"><img src="assets/img/product/product-03.jpg" /></div>
+  </div>
+
+  <div class="reels-row">
+    <h3>— BUSINESS FILMS —</h3>
+    <div class="reel-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="reel-card wide">
+        <video src="assets/video/yoel-barber.mp4" controls preload="metadata"></video>
+        <div class="label">YOEL · The Barber (Brand Story)</div>
+      </div>
+      <div class="reel-card wide">
+        <video src="assets/video/yoel-barber-2.mp4" muted loop playsinline preload="metadata"
+               onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="label">YOEL · The Barber II</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEDDING — mixed -->
+<section class="sec wrap reveal" id="wedding">
+  <h2>WEDDING <em>&amp; Family Stories</em></h2>
+  <p class="lede">
+    The first look. The dust kicked up during the first dance. The grandmother crying in the
+    third row. Documented as cinematic short stories — never staged, always honest, edited
+    so the day plays back the way it actually felt.
+  </p>
+
+  <div class="grid" style="margin-top: 30px;">
+    <div class="lwide"><img src="assets/img/wedding/wedding-04.jpg" /></div>
+    <div class="p"><img src="assets/img/wedding/wedding-03.jpg" /></div>
+    <div class="p"><img src="assets/img/wedding/wedding-05.jpg" /></div>
+    <div class="l"><img src="assets/img/wedding/wedding-02.jpg" /></div>
+    <div class="p"><img src="assets/img/wedding/wedding-08.jpg" /></div>
+    <div class="p"><img src="assets/img/wedding/wedding-09.jpg" /></div>
+    <div class="p"><img src="assets/img/wedding/wedding-10.jpg" /></div>
+    <div class="lwide"><img src="assets/img/wedding/wedding-07.jpg" /></div>
+    <div class="sq"><img src="assets/img/wedding/wedding-01.jpg" /></div>
+    <div class="sq"><img src="assets/img/wedding/wedding-06.jpg" /></div>
+  </div>
+</section>
+
+<!-- BTS -->
+<section class="bts reveal" id="bts">
+  <h2>BEHIND THE SCENES</h2>
+  <p>
+    Every photo on this site has a story behind it — the 4am hike for one minute of golden hour,
+    the chef who wouldn't stop refilling the plate, the bartender who set the bar on fire on cue,
+    the corner of a Mongolian field that worked because we waited an hour for the cloud to move.
+    The behind-the-scenes is the part I keep for the long cold nights of editing.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <h2>CONTACT <em>me</em></h2>
+  <p class="lede" style="margin: 20px auto 30px; max-width: 540px; text-align: center;">
+    Available for commission worldwide. Restaurants, brands, films, weddings, and the projects
+    that don't fit a category. I read every email — usually within the day.
+  </p>
+  <div class="contact-info">
+    <span><strong>EMAIL</strong> chen@yoursite.com</span>
+    <span><strong>PHONE</strong> +972 — — — —</span>
+    <span><strong>BASED</strong> Be'er Sheva · On the road</span>
+    <span><strong>SOCIAL</strong> @chenkessler</span>
+  </div>
+  <div class="lets-work">— LET'S MAKE SOMETHING —</div>
+</section>
+
+<footer>© 2026 — Chen Kessler · Photographer &amp; Videographer · All frames mine</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.addEventListener('mousemove', (e) => {
+    const p = document.querySelector('.hero .polaroid');
+    if (!p) return;
+    const x = (e.clientX / window.innerWidth - 0.5) * 8;
+    const y = (e.clientY / window.innerHeight - 0.5) * 8;
+    p.style.transform = `rotate(2.5deg) translate(${x}px, ${y}px)`;
+  });
+</script>
+</body>
+</html>
