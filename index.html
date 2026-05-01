@@ -239,6 +239,14 @@
   .grid-nightlife .night-banner { grid-column: span 3; grid-row: span 1; }
   .grid-nightlife .night-tall { grid-row: span 2; }
 
+  .grid-music {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 146px;
+  }
+  .grid-music .music-hero { grid-column: span 2; grid-row: span 3; }
+  .grid-music .music-tall { grid-row: span 2; }
+  .grid-music .music-wide { grid-column: span 2; grid-row: span 2; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -482,6 +490,12 @@
     }
     .grid-nightlife .night-hero { grid-column: span 3; grid-row: span 2; }
     .grid-nightlife .night-banner { grid-column: span 2; }
+    .grid-music {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 136px;
+    }
+    .grid-music .music-hero { grid-column: span 2; grid-row: span 3; }
+    .grid-music .music-wide { grid-column: span 2; grid-row: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -541,6 +555,16 @@
     .grid-nightlife .night-wide,
     .grid-nightlife .night-banner,
     .grid-nightlife .night-tall {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-music {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-music .music-hero,
+    .grid-music .music-tall,
+    .grid-music .music-wide {
       grid-column: auto;
       grid-row: auto;
     }
@@ -842,14 +866,14 @@
     The kind of shoot where you let the song run the room and follow.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="pwide"><img src="assets/img/music/maya-05.jpg" /></div>
-    <div class="p"><img src="assets/img/music/maya-02.jpg" /></div>
-    <div class="p"><img src="assets/img/music/maya-04.jpg" /></div>
-    <div class="p"><img src="assets/img/music/maya-07.jpg" /></div>
-    <div class="p"><img src="assets/img/music/maya-09.jpg" /></div>
-    <div class="p"><img src="assets/img/music/maya-03.jpg" /></div>
-    <div class="p"><img src="assets/img/music/maya-08.jpg" /></div>
+  <div class="grid grid-music">
+    <div class="music-hero"><img src="assets/img/music/maya-05.jpg" alt="Maya Singer seated portrait in soft window light" /></div>
+    <div class="music-tall"><img src="assets/img/music/maya-02.jpg" alt="Maya Singer black and white portrait in shadow" /></div>
+    <div class="music-tall"><img src="assets/img/music/maya-04.jpg" alt="Maya Singer profile portrait by curtain light" /></div>
+    <div class="music-tall"><img src="assets/img/music/maya-07.jpg" alt="Maya Singer reclined portrait by curtain light" /></div>
+    <div class="music-wide"><img src="assets/img/music/maya-09.jpg" alt="Maya Singer striped dress seated portrait" /></div>
+    <div class="music-tall"><img src="assets/img/music/maya-03.jpg" alt="Maya Singer black and white framed portrait" /></div>
+    <div class="music-wide"><img src="assets/img/music/maya-08.jpg" alt="Maya Singer monochrome portrait with window shadow" /></div>
   </div>
 
   <div class="reels-row">
