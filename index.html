@@ -271,6 +271,15 @@
   .grid-product .product-square { grid-row: span 1; }
   .grid-product .product-tall { grid-row: span 2; }
 
+  .grid-wedding {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 146px;
+  }
+  .grid-wedding .wedding-hero { grid-column: span 3; grid-row: span 2; }
+  .grid-wedding .wedding-tall { grid-row: span 2; }
+  .grid-wedding .wedding-wide { grid-column: span 2; grid-row: span 2; }
+  .grid-wedding .wedding-banner { grid-column: span 3; grid-row: span 1; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -536,6 +545,13 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       grid-auto-rows: 160px;
     }
+    .grid-wedding {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 136px;
+    }
+    .grid-wedding .wedding-hero { grid-column: span 2; grid-row: span 2; }
+    .grid-wedding .wedding-wide { grid-column: span 2; grid-row: span 2; }
+    .grid-wedding .wedding-banner { grid-column: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -635,6 +651,17 @@
     }
     .grid-product .product-square,
     .grid-product .product-tall {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-wedding {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-wedding .wedding-hero,
+    .grid-wedding .wedding-tall,
+    .grid-wedding .wedding-wide,
+    .grid-wedding .wedding-banner {
       grid-column: auto;
       grid-row: auto;
     }
@@ -1128,17 +1155,16 @@
     so the day plays back the way it actually felt.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="lwide"><img src="assets/img/wedding/wedding-04.jpg" /></div>
-    <div class="p"><img src="assets/img/wedding/wedding-03.jpg" /></div>
-    <div class="p"><img src="assets/img/wedding/wedding-05.jpg" /></div>
-    <div class="l"><img src="assets/img/wedding/wedding-02.jpg" /></div>
-    <div class="p"><img src="assets/img/wedding/wedding-08.jpg" /></div>
-    <div class="p"><img src="assets/img/wedding/wedding-09.jpg" /></div>
-    <div class="p"><img src="assets/img/wedding/wedding-10.jpg" /></div>
-    <div class="lwide"><img src="assets/img/wedding/wedding-07.jpg" /></div>
-    <div class="sq"><img src="assets/img/wedding/wedding-01.jpg" /></div>
-    <div class="sq"><img src="assets/img/wedding/wedding-06.jpg" /></div>
+  <div class="grid grid-wedding">
+    <div class="wedding-hero"><img src="assets/img/wedding/wedding-04.jpg" alt="Wedding couple opening champagne in desert" /></div>
+    <div class="wedding-tall"><img src="assets/img/wedding/wedding-03.jpg" alt="Wedding couple celebrating with champagne spray" /></div>
+    <div class="wedding-tall"><img src="assets/img/wedding/wedding-05.jpg" alt="Wedding couple portrait on desert rocks" /></div>
+    <div class="wedding-wide"><img src="assets/img/wedding/wedding-02.jpg" alt="Wedding champagne burst close-up" /></div>
+    <div class="wedding-tall"><img src="assets/img/wedding/wedding-08.jpg" alt="Wedding portrait under veil in black and white" /></div>
+    <div class="wedding-tall"><img src="assets/img/wedding/wedding-09.jpg" alt="Wedding couple embrace in black and white" /></div>
+    <div class="wedding-banner"><img src="assets/img/wedding/wedding-07.jpg" alt="Wedding portrait with arms raised against blue sky" /></div>
+    <div class="wedding-tall"><img src="assets/img/wedding/wedding-01.jpg" alt="Wedding black and white portrait with fabric overhead" /></div>
+    <div class="wedding-tall"><img src="assets/img/wedding/wedding-06.jpg" alt="Wedding proposal moment in black and white" /></div>
   </div>
 </section>
 
