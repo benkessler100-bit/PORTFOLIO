@@ -613,33 +613,53 @@
     }
     .who { grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center; }
     .who-meta { grid-template-columns: 1fr; gap: 14px; }
-    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
     .grid-content, .grid-content.flip { grid-template-columns: 1fr; gap: 30px; }
     .contact-info { grid-template-columns: 1fr; }
-    .reel-grid { grid-template-columns: repeat(2, 1fr); }
-    .reel-card.wide { aspect-ratio: 4 / 5; }
+    .reel-grid { grid-template-columns: 1fr; }
+    .reel-card,
+    .reel-card.wide,
     .featured-reel,
-    .featured-reel[style] { aspect-ratio: 4 / 3 !important; }
+    .featured-reel[style] {
+      aspect-ratio: auto !important;
+      overflow: visible;
+    }
+    .reel-card video,
+    .featured-reel video {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
     .full-banner, .bts { background-attachment: scroll; }
     .grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
-      gap: 12px;
+      gap: 14px;
     }
     .grid > * {
-      grid-column: span 1;
-      grid-row: span 1;
-      aspect-ratio: 4 / 5;
-    }
-    .l, .lmed, .lwide, .lfull, .feat, .pwide {
       grid-column: 1 / -1;
-      aspect-ratio: 16 / 10;
+      grid-row: auto;
+      aspect-ratio: auto;
+      overflow: visible;
+      min-height: 0;
     }
-    .sq { aspect-ratio: 1 / 1; }
-    .rail { grid-auto-columns: minmax(240px, 78vw); }
-    .rail img { height: 320px; }
+    .grid img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      aspect-ratio: auto;
+      background: #111;
+    }
+    .l, .lmed, .lwide, .lfull, .feat, .pwide, .sq {
+      grid-column: 1 / -1;
+      aspect-ratio: auto;
+    }
+    .rail { grid-auto-columns: 86vw; }
+    .rail img { height: auto; object-fit: contain; background: #111; }
     .grid-fashion {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-fashion .fashion-hero,
@@ -650,7 +670,7 @@
       grid-row: auto;
     }
     .grid-restaurant {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-restaurant .restaurant-hero,
@@ -662,7 +682,7 @@
       grid-row: auto;
     }
     .grid-nightlife {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-nightlife .night-hero,
@@ -673,7 +693,7 @@
       grid-row: auto;
     }
     .grid-music {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-music .music-hero,
@@ -683,7 +703,7 @@
       grid-row: auto;
     }
     .grid-portrait {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-portrait .portrait-hero,
@@ -693,7 +713,7 @@
       grid-row: auto;
     }
     .grid-racing {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-racing .racing-hero,
@@ -704,7 +724,7 @@
       grid-row: auto;
     }
     .grid-product {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-product .product-square,
@@ -713,7 +733,7 @@
       grid-row: auto;
     }
     .grid-wedding {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
     }
     .grid-wedding .wedding-hero,
@@ -750,34 +770,8 @@
     }
     .hero-banner { height: 180px; }
     .lede { font-size: 13px; line-height: 1.65; }
-    .highlights-grid { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: 1fr; }
-    .grid > *,
-    .l, .lmed, .lwide, .lfull, .feat, .pwide {
-      grid-column: 1 / -1;
-      aspect-ratio: auto;
-    }
-    .grid > * {
-      background: rgba(255,255,255,0.02);
-      min-height: 0;
-    }
-    .grid img {
-      height: auto;
-      aspect-ratio: auto;
-      object-fit: contain;
-      background: #111;
-    }
-    .reel-grid { grid-template-columns: 1fr; }
-    .reel-card,
-    .reel-card.wide { aspect-ratio: 9 / 16; }
-    .reel-card.wide[style] {
-      grid-column: auto !important;
-      aspect-ratio: 4 / 5 !important;
-    }
-    .featured-reel,
-    .featured-reel[style] { aspect-ratio: 4 / 5 !important; }
-    .rail { grid-auto-columns: 84vw; }
-    .rail img { height: 280px; }
+    .grid > * { background: rgba(255,255,255,0.02); }
+    .rail { grid-auto-columns: 88vw; }
     .contact h2 { font-size: clamp(56px, 20vw, 96px); }
     .contact-card { padding: 16px; min-height: 0; }
     .lets-work { letter-spacing: 4px; font-size: 15px; }
