@@ -255,6 +255,15 @@
   .grid-portrait .portrait-tall { grid-row: span 2; }
   .grid-portrait .portrait-wide { grid-column: span 2; grid-row: span 2; }
 
+  .grid-racing {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 138px;
+  }
+  .grid-racing .racing-hero { grid-column: span 4; grid-row: span 2; }
+  .grid-racing .racing-wide { grid-column: span 2; grid-row: span 1; }
+  .grid-racing .racing-banner { grid-column: span 3; grid-row: span 1; }
+  .grid-racing .racing-tall { grid-row: span 2; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -510,6 +519,12 @@
     }
     .grid-portrait .portrait-hero { grid-column: span 2; grid-row: span 3; }
     .grid-portrait .portrait-wide { grid-column: span 2; grid-row: span 2; }
+    .grid-racing {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 132px;
+    }
+    .grid-racing .racing-hero { grid-column: span 3; grid-row: span 2; }
+    .grid-racing .racing-banner { grid-column: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -589,6 +604,17 @@
     .grid-portrait .portrait-hero,
     .grid-portrait .portrait-tall,
     .grid-portrait .portrait-wide {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .grid-racing {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-racing .racing-hero,
+    .grid-racing .racing-wide,
+    .grid-racing .racing-banner,
+    .grid-racing .racing-tall {
       grid-column: auto;
       grid-row: auto;
     }
@@ -953,15 +979,15 @@
     same apex, waiting for the right car to come through with the light dropping just so.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="lfull"><img src="assets/img/racing/racing-06.jpg" /></div>
-    <div class="l"><img src="assets/img/racing/racing-02.jpg" /></div>
-    <div class="l"><img src="assets/img/racing/racing-04.jpg" /></div>
-    <div class="lwide"><img src="assets/img/racing/racing-08.jpg" /></div>
-    <div class="p"><img src="assets/img/racing/racing-01.jpg" /></div>
-    <div class="l"><img src="assets/img/racing/racing-10.jpg" /></div>
-    <div class="l"><img src="assets/img/racing/racing-12.jpg" /></div>
-    <div class="lfull"><img src="assets/img/racing/racing-15.jpg" /></div>
+  <div class="grid grid-racing">
+    <div class="racing-hero"><img src="assets/img/racing/racing-06.jpg" alt="Racing hero pan of black car on track" /></div>
+    <div class="racing-wide"><img src="assets/img/racing/racing-02.jpg" alt="Small hatchback cornering on track" /></div>
+    <div class="racing-wide"><img src="assets/img/racing/racing-04.jpg" alt="White race car entering corner" /></div>
+    <div class="racing-banner"><img src="assets/img/racing/racing-08.jpg" alt="Two race cars side by side on track" /></div>
+    <div class="racing-tall"><img src="assets/img/racing/racing-01.jpg" alt="Blue car portrait by cones on track" /></div>
+    <div class="racing-wide"><img src="assets/img/racing/racing-10.jpg" alt="Orange race car in motion on track" /></div>
+    <div class="racing-wide"><img src="assets/img/racing/racing-12.jpg" alt="Gold race car rolling through corner" /></div>
+    <div class="racing-banner"><img src="assets/img/racing/racing-15.jpg" alt="White hatchback panning shot at speed" /></div>
   </div>
 
   <div class="featured-reel" style="margin-top: 40px;">
