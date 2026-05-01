@@ -675,6 +675,7 @@
     .grid-fashion .fashion-wide,
     .grid-fashion .fashion-tall,
     .grid-fashion .fashion-square {
+      display: block;
       grid-column: auto;
       grid-row: auto;
     }
@@ -687,6 +688,7 @@
     .grid-restaurant .restaurant-wide,
     .grid-restaurant .restaurant-tall,
     .grid-restaurant .restaurant-square {
+      display: block;
       grid-column: auto;
       grid-row: auto;
     }
@@ -751,6 +753,12 @@
     .grid-wedding .wedding-banner {
       grid-column: auto;
       grid-row: auto;
+    }
+    .reveal,
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 
