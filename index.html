@@ -211,6 +211,15 @@
     text-transform: uppercase;
   }
 
+  .grid-fashion {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 150px;
+  }
+  .grid-fashion .fashion-hero { grid-column: span 2; grid-row: span 3; }
+  .grid-fashion .fashion-tall { grid-row: span 2; }
+  .grid-fashion .fashion-wide { grid-column: span 2; grid-row: span 2; }
+  .grid-fashion .fashion-square { grid-row: span 1; }
+
   .p     { grid-column: span 3; grid-row: span 5; }
   .pwide { grid-column: span 4; grid-row: span 6; }
   .l     { grid-column: span 6; grid-row: span 3; }
@@ -412,6 +421,12 @@
     .feat { grid-column: span 4; grid-row: span 5; }
     .l, .lmed { grid-column: span 4; grid-row: span 3; }
     .lwide, .lfull { grid-column: span 8; grid-row: span 3; }
+    .grid-fashion {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 140px;
+    }
+    .grid-fashion .fashion-hero { grid-column: span 2; grid-row: span 3; }
+    .grid-fashion .fashion-wide { grid-column: span 2; grid-row: span 2; }
   }
 
   @media (max-width: 900px) {
@@ -440,6 +455,17 @@
     .sq { aspect-ratio: 1 / 1; }
     .rail { grid-auto-columns: minmax(240px, 78vw); }
     .rail img { height: 320px; }
+    .grid-fashion {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+    }
+    .grid-fashion .fashion-hero,
+    .grid-fashion .fashion-wide,
+    .grid-fashion .fashion-tall,
+    .grid-fashion .fashion-square {
+      grid-column: auto;
+      grid-row: auto;
+    }
   }
 
   @media (max-width: 560px) {
@@ -565,18 +591,17 @@
     and the AI work.
   </p>
 
-  <div class="grid" style="margin-top: 30px;">
-    <div class="feat"><img src="assets/img/fashion-chicode/chicode-12.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-04.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-08.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-19.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-22.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-27.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-31.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-35.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-38.jpg" /></div>
-    <div class="lwide"><img src="assets/img/fashion-chicode/chicode-43.jpg" /></div>
-    <div class="p"><img src="assets/img/fashion-chicode/chicode-15.jpg" /></div>
+  <div class="grid grid-fashion">
+    <div class="fashion-hero"><img src="assets/img/fashion-chicode/chicode-12.jpg" alt="Chicode campaign portrait duo" /></div>
+    <div class="fashion-tall"><img src="assets/img/fashion-chicode/chicode-04.jpg" alt="Chicode editorial seated portrait" /></div>
+    <div class="fashion-tall"><img src="assets/img/fashion-chicode/chicode-08.jpg" alt="Chicode suit portrait in warm interior" /></div>
+    <div class="fashion-tall"><img src="assets/img/fashion-chicode/chicode-22.jpg" alt="Chicode fashion frame on steps" /></div>
+    <div class="fashion-tall"><img src="assets/img/fashion-chicode/chicode-27.jpg" alt="Chicode streetwear portrait in pink" /></div>
+    <div class="fashion-square"><img src="assets/img/fashion-chicode/chicode-31.jpg" alt="Chicode flat lay with accessories" /></div>
+    <div class="fashion-square"><img src="assets/img/fashion-chicode/chicode-35.jpg" alt="Chicode duo portrait by mural" /></div>
+    <div class="fashion-tall"><img src="assets/img/fashion-chicode/chicode-38.jpg" alt="Chicode seated portrait by doorway" /></div>
+    <div class="fashion-tall"><img src="assets/img/fashion-chicode/chicode-15.jpg" alt="Chicode sunglasses portrait" /></div>
+    <div class="fashion-wide"><img src="assets/img/fashion-chicode/chicode-43.jpg" alt="Chicode editorial in blue-toned garage" /></div>
   </div>
 
   <div class="reels-row">
