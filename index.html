@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="format-detection" content="telephone=no, email=no, address=no" />
+<meta name="x-apple-disable-message-reformatting" />
 <title>PORTFOLIO — Photographer & Videographer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -473,6 +475,14 @@
     margin-bottom: 8px;
     font-weight: 500;
   }
+  .contact-card a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .25s, border-color .25s;
+  }
+  .contact-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .contact-card a:visited { color: var(--ink); }
   .lets-work {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
