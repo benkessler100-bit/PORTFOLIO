@@ -475,14 +475,19 @@
     margin-bottom: 8px;
     font-weight: 500;
   }
-  .contact-card a {
-    color: var(--ink);
-    text-decoration: none;
+  .contact-card a,
+  .contact-card a:link,
+  .contact-card a:visited,
+  .contact-card a:active {
+    color: var(--ink) !important;
+    text-decoration: none !important;
     border-bottom: 1px solid transparent;
     transition: color .25s, border-color .25s;
   }
-  .contact-card a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-  .contact-card a:visited { color: var(--ink); }
+  .contact-card a:hover {
+    color: var(--accent) !important;
+    border-bottom-color: var(--accent);
+  }
   .lets-work {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
