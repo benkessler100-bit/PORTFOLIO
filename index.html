@@ -160,6 +160,14 @@
     .half-enter { display: none; }
     .brand { width: 100%; }
   }
+  /* Short screens (landscape phones): fixed brand/foot collide with the halves — slim everything down */
+  @media (max-height: 500px) {
+    .brand { top: 12px; }
+    .brand p, .foot { display: none; }
+    .half { padding: 4vh 6vw; }
+    .half-sub, .half-kicker { display: none; }
+    .half-label { font-size: clamp(34px, 9vh, 64px); }
+  }
 </style>
 </head>
 <body>
