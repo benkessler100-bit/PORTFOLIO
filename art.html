@@ -1001,6 +1001,31 @@
     padding: 6px 12px; border-radius: 999px;
   }
   @media (max-width: 800px) { .film-slots { grid-template-columns: 1fr; } }
+  /* ===== Film cards ===== */
+  .film-card {
+    display: grid; grid-template-columns: 1.5fr 1fr;
+    gap: 34px; align-items: center;
+    margin-top: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line);
+  }
+  .film-card:last-of-type { border-bottom: none; }
+  .film-info h3 {
+    font-family: 'Bebas Neue';
+    font-size: 34px; letter-spacing: 2px;
+    color: var(--paper);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .film-info .film-en { font-size: 15px; letter-spacing: 6px; color: var(--accent); }
+  .film-meta {
+    margin-top: 12px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .film-desc { margin-top: 14px; color: var(--muted); font-size: 13.5px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .film-card { grid-template-columns: 1fr; gap: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -1016,6 +1041,7 @@
   <a class="brand" href="#top">CHEN · KESSLER</a>
   <ul>
     <li><a href="#films">Films</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#portrait">Portrait</a></li>
     <li><a href="#travel">Travel</a></li>
     <li><a href="#bts">BTS</a></li>
@@ -1027,6 +1053,7 @@
 <div class="topbar-scroll" aria-label="Quick navigation">
   <a href="#top">Top</a>
   <a href="#films">Films</a>
+  <a href="#projects">Projects</a>
   <a href="#portrait">Portrait</a>
   <a href="#travel">Travel</a>
   <a href="#bts">BTS</a>
@@ -1088,7 +1115,7 @@
 <!-- ART SHOWREEL -->
 <section class="sec wrap reveal" id="art-reel">
   <h2>SLOW <em>frames</em></h2>
-  <p class="lede">A cinematic short from the personal archive — light, texture, patience. More films from the writing room at Tel Aviv University are on their way to this page.</p>
+  <p class="lede">A cinematic short from the personal archive — light, texture, patience. The university films now live one scroll below.</p>
   <div class="featured-reel">
     <video src="assets/video/moonlighting.mp4" controls preload="metadata" poster="assets/video/posters/moonlighting.jpg"></video>
   </div>
@@ -1099,27 +1126,89 @@
 <section class="sec wrap reveal" id="films">
   <h2>SHORT <em>films</em></h2>
   <p class="lede">
-    Written, directed and edited between semesters at Tel Aviv University.
-    The first titles are on their way to this page — loglines, stills, and the films themselves.
+    Written, shot, and cut between semesters at Tel Aviv University.
+    Hebrew-language shorts — watch them right here.
   </p>
-  <div class="film-slots">
-    <div class="film-slot">
-      <div class="no">01</div>
-      <h3>UNTITLED — ASIA DOCUMENTARY</h3>
-      <p>Eight months, eight countries, one camera that never really got put away. A long-form cut of the road.</p>
-      <span class="status">In the edit</span>
+
+  <div class="film-card">
+    <div class="film-player featured-reel" style="margin-top:0;">
+      <video src="assets/video/shalom-aba.mp4" controls preload="none" poster="assets/video/posters/shalom-aba.jpg"></video>
     </div>
-    <div class="film-slot">
-      <div class="no">02</div>
-      <h3>TAU PRODUCTION 01</h3>
-      <p>First-year film — written and directed at Tel Aviv University's film program.</p>
-      <span class="status">In production</span>
+    <div class="film-info">
+      <h3>שלום, אבא <span class="film-en">SHALOM, ABA</span></h3>
+      <p class="film-meta">Short film · 10 min · Hebrew · 2026</p>
+      <p class="film-desc">
+        A ten-minute drama made at Tel Aviv University. Shot on set with a full student
+        crew — the behind-the-scenes gallery below is from these shoot days.
+      </p>
     </div>
-    <div class="film-slot">
-      <div class="no">03</div>
-      <h3>NEXT SCRIPT</h3>
-      <p>The one currently living in the notes app. Logline lands here the day it survives a table read.</p>
-      <span class="status">In development</span>
+  </div>
+
+  <div class="film-card">
+    <div class="film-player featured-reel" style="margin-top:0;">
+      <video src="assets/video/kaktuses.mp4" controls preload="none" poster="assets/video/posters/kaktuses.jpg"></video>
+    </div>
+    <div class="film-info">
+      <h3>קקטוסים <span class="film-en">KAKTUSIM</span></h3>
+      <p class="film-meta">Short film · 6 min · Hebrew · 2026</p>
+      <p class="film-desc">
+        Final cut with subtitles. A six-minute short — dry as its title promises.
+      </p>
+    </div>
+  </div>
+
+  <div class="film-card">
+    <div class="film-player featured-reel" style="margin-top:0;">
+      <video src="assets/video/ot-kain.mp4" controls preload="none" poster="assets/video/posters/ot-kain.jpg"></video>
+    </div>
+    <div class="film-info">
+      <h3>אות קין <span class="film-en">OT KAYIN</span></h3>
+      <p class="film-meta">Short film · 7 min · Hebrew · 2026 · Color grade: Chen Kessler</p>
+      <p class="film-desc">
+        A seven-minute short graded start-to-finish in DaVinci Resolve —
+        selected frames from the grade below.
+      </p>
+    </div>
+  </div>
+
+  <div class="cinema-stills-rail rail" style="margin-top: 40px;">
+    <img src="assets/img/cinema-stills/shalom-aba-01.jpg" alt="Shalom Aba — film still 1" />
+    <img src="assets/img/cinema-stills/shalom-aba-03.jpg" alt="Shalom Aba — film still 2" />
+    <img src="assets/img/cinema-stills/shalom-aba-05.jpg" alt="Shalom Aba — film still 3" />
+    <img src="assets/img/cinema-stills/shalom-aba-07.jpg" alt="Shalom Aba — film still 4" />
+    <img src="assets/img/cinema-stills/ot-kain-01.jpg" alt="Ot Kayin — graded frame 1" />
+    <img src="assets/img/cinema-stills/ot-kain-02.jpg" alt="Ot Kayin — graded frame 2" />
+    <img src="assets/img/cinema-stills/ot-kain-04.jpg" alt="Ot Kayin — graded frame 3" />
+  </div>
+</section>
+
+<!-- PERSONAL PROJECTS -->
+<section class="sec wrap reveal" id="projects">
+  <h2>PERSONAL <em>projects</em></h2>
+  <p class="lede">
+    Self-initiated micro-films — one idea, one frame, no brief. Where the experiments live
+    before they end up in client work.
+  </p>
+  <div class="reel-grid">
+    <div class="reel-card">
+      <video src="assets/video/pp-abcd.mp4" data-poster="assets/video/posters/pp-abcd.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="label">ABCD</div>
+    </div>
+    <div class="reel-card wide">
+      <video src="assets/video/pp-balance.mp4" data-poster="assets/video/posters/pp-balance.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="label">BALANCE</div>
+    </div>
+    <div class="reel-card wide">
+      <video src="assets/video/pp-break-the-pattern.mp4" data-poster="assets/video/posters/pp-break-the-pattern.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="label">BREAK THE PATTERN</div>
+    </div>
+    <div class="reel-card wide">
+      <video src="assets/video/pp-keep-pushing.mp4" data-poster="assets/video/posters/pp-keep-pushing.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="label">KEEP PUSHING</div>
+    </div>
+    <div class="reel-card wide">
+      <video src="assets/video/pp-young-me.mp4" data-poster="assets/video/posters/pp-young-me.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="label">YOUNG ME</div>
     </div>
   </div>
 </section>
@@ -1230,14 +1319,23 @@
 </section>
 
 <!-- BTS -->
-<section class="bts reveal" id="bts">
-  <h2>BEHIND THE SCENES</h2>
-  <p>
-    Every photo on this site has a story behind it — the 4am hike for one minute of golden hour,
-    the chef who wouldn't stop refilling the plate, the bartender who set the bar on fire on cue,
-    the corner of a Mongolian field that worked because we waited an hour for the cloud to move.
-    The behind-the-scenes is the part I keep for the long cold nights of editing.
+<section class="sec wrap reveal" id="bts">
+  <h2>BEHIND <em>the scenes</em></h2>
+  <p class="lede">
+    Set days from "Shalom, Aba" — the student crew, the lights that almost fit the room,
+    and the director's chair nobody sat in. This is the part I keep for the long cold
+    nights of editing.
   </p>
+  <div class="grid" style="margin-top: 30px;">
+    <div class="feat"><img src="assets/img/cinema-bts/bts-01.jpg" alt="On set of Shalom Aba — crew at work" /></div>
+    <div class="p"><img src="assets/img/cinema-bts/bts-03.jpg" alt="Shalom Aba BTS — lighting setup" /></div>
+    <div class="p"><img src="assets/img/cinema-bts/bts-05.jpg" alt="Shalom Aba BTS — camera department" /></div>
+    <div class="l"><img src="assets/img/cinema-bts/bts-07.jpg" alt="Shalom Aba BTS — blocking the scene" /></div>
+    <div class="l"><img src="assets/img/cinema-bts/bts-09.jpg" alt="Shalom Aba BTS — between takes" /></div>
+    <div class="p"><img src="assets/img/cinema-bts/bts-02.jpg" alt="Shalom Aba BTS — on location" /></div>
+    <div class="p"><img src="assets/img/cinema-bts/bts-11.jpg" alt="Shalom Aba BTS — set life" /></div>
+    <div class="lmed"><img src="assets/img/cinema-bts/bts-13.jpg" alt="Shalom Aba BTS — the crew" /></div>
+  </div>
 </section>
 
 <!-- CONTACT -->
