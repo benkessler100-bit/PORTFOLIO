@@ -7,6 +7,22 @@
 <meta name="x-apple-disable-message-reformatting" />
 <title>Chen Kessler — Commercial Photography & Film</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Chen Kessler",
+  "jobTitle": "Photographer & Videographer",
+  "email": "mailto:benkessler100@gmail.com",
+  "telephone": "+972524328862",
+  "address": { "@type": "PostalAddress", "addressLocality": "Tel Aviv", "addressCountry": "IL" },
+  "sameAs": ["https://instagram.com/chenkessler"],
+  "knowsAbout": ["Photography", "Cinematography", "Film Editing", "Screenwriting"]
+}
+</script>
+
 <meta name="description" content="Commercial photography and film by Chen Kessler — brand campaigns, restaurant content, nightlife, music, motorsport and weddings. Tel Aviv." />
 <meta property="og:title" content="Chen Kessler — Commercial Photography & Film" />
 <meta property="og:description" content="Campaigns, reels & photography for clients — Chicode, Bar Giora, Saba Edward, Oakberry, Petzael × Sparco and more." />
@@ -921,6 +937,54 @@
       opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
     }
   }
+  /* ===== Lightbox navigation ===== */
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 5;
+    background: rgba(10,10,10,0.45);
+    border: 1px solid var(--line);
+    color: var(--paper);
+    font-family: 'Bebas Neue';
+    font-size: 34px; line-height: 1;
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .25s, color .25s, border-color .25s;
+    backdrop-filter: blur(6px);
+  }
+  .lightbox-nav:hover { background: var(--paper); color: #1a1610; border-color: var(--paper); }
+  .lightbox-prev { left: 22px; }
+  .lightbox-next { right: 22px; }
+  .lightbox-counter {
+    position: absolute; top: 20px; left: 26px;
+    font-size: 12px; letter-spacing: 4px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    z-index: 5;
+  }
+  .lightbox.video-mode .lightbox-nav,
+  .lightbox.video-mode .lightbox-counter { display: none; }
+  @media (max-width: 700px) {
+    .lightbox-nav { width: 44px; height: 44px; font-size: 26px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+  }
+
+  /* ===== Floating WhatsApp ===== */
+  .wa-float {
+    position: fixed; right: 22px; bottom: 22px; z-index: 250;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(10,10,10,0.72);
+    border: 1px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    transition: transform .3s ease, background .3s ease;
+  }
+  .wa-float:hover { transform: translateY(-4px) scale(1.05); background: rgba(30,26,18,0.9); }
+  .wa-float svg { width: 26px; height: 26px; fill: var(--accent); }
+  @media (max-width: 700px) { .wa-float { right: 14px; bottom: 14px; } }
 </style>
 </head>
 <body>
@@ -1066,42 +1130,42 @@
         <div class="label">VIACCI · Brand Film</div>
       </div>
       <div class="reel-card wide">
-        <video src="assets/video/viacci-1.mp4" poster="assets/video/posters/viacci-1.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/viacci-1.mp4" data-poster="assets/video/posters/viacci-1.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">VIACCI · Teaser</div>
       </div>
       <div class="reel-card wide">
-        <video src="assets/video/chicode-ai-1.mp4" poster="assets/video/posters/chicode-ai-1.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-ai-1.mp4" data-poster="assets/video/posters/chicode-ai-1.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · Generative Lookbook I</div>
       </div>
       <div class="reel-card wide">
-        <video src="assets/video/chicode-ai-2.mp4" poster="assets/video/posters/chicode-ai-2.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-ai-2.mp4" data-poster="assets/video/posters/chicode-ai-2.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · Generative Lookbook II</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/chicode-running.mp4" poster="assets/video/posters/chicode-running.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-running.mp4" data-poster="assets/video/posters/chicode-running.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · On The Run</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/chicode-stairs.mp4" poster="assets/video/posters/chicode-stairs.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-stairs.mp4" data-poster="assets/video/posters/chicode-stairs.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · Stairwell Cut</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/chicode-car-ride.mp4" poster="assets/video/posters/chicode-car-ride.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-car-ride.mp4" data-poster="assets/video/posters/chicode-car-ride.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · City Drive</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/chicode-bag.mp4" poster="assets/video/posters/chicode-bag.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-bag.mp4" data-poster="assets/video/posters/chicode-bag.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · Bag Story</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/chicode-micro-1.mp4" poster="assets/video/posters/chicode-micro-1.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/chicode-micro-1.mp4" data-poster="assets/video/posters/chicode-micro-1.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">CHICODE · Micro Reel</div>
       </div>
@@ -1134,47 +1198,47 @@
     <h3>— FOOD &amp; DRINK FILMS —</h3>
     <div class="reel-grid">
       <div class="reel-card">
-        <video src="assets/video/saba-edwards.mp4" poster="assets/video/posters/saba-edwards.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/saba-edwards.mp4" data-poster="assets/video/posters/saba-edwards.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">SABA EDWARD · Signature Pizza</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/bargiora-reel.mp4" poster="assets/video/posters/bargiora-reel.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/bargiora-reel.mp4" data-poster="assets/video/posters/bargiora-reel.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">BAR GIORA · House Reel</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/bargiora-hatzil.mp4" poster="assets/video/posters/bargiora-hatzil.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/bargiora-hatzil.mp4" data-poster="assets/video/posters/bargiora-hatzil.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">BAR GIORA · Eggplant Plate</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/bargiora-burger.mp4" poster="assets/video/posters/bargiora-burger.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/bargiora-burger.mp4" data-poster="assets/video/posters/bargiora-burger.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">BAR GIORA · Burger Drop</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/bargiora-cocktail-1.mp4" poster="assets/video/posters/bargiora-cocktail-1.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/bargiora-cocktail-1.mp4" data-poster="assets/video/posters/bargiora-cocktail-1.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">BAR GIORA · Cocktail Pour I</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/bargiora-cocktail-2.mp4" poster="assets/video/posters/bargiora-cocktail-2.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/bargiora-cocktail-2.mp4" data-poster="assets/video/posters/bargiora-cocktail-2.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">BAR GIORA · Cocktail Pour II</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/jessica-love.mp4" poster="assets/video/posters/jessica-love.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/jessica-love.mp4" data-poster="assets/video/posters/jessica-love.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">JESSICA · So This Is Love</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/jessica-roger.mp4" poster="assets/video/posters/jessica-roger.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/jessica-roger.mp4" data-poster="assets/video/posters/jessica-roger.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">JESSICA · Roger Cocktail</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/oakberry.mp4" poster="assets/video/posters/oakberry.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/oakberry.mp4" data-poster="assets/video/posters/oakberry.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">OAKBERRY · Brand Spot</div>
       </div>
@@ -1232,17 +1296,17 @@
     <h3>— MUSIC FILMS —</h3>
     <div class="reel-grid">
       <div class="reel-card">
-        <video src="assets/video/maya-1.mp4" poster="assets/video/posters/maya-1.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/maya-1.mp4" data-poster="assets/video/posters/maya-1.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">MAYA SINGER · Dirty Laundry (V1)</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/maya-reel-2.mp4" poster="assets/video/posters/maya-reel-2.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/maya-reel-2.mp4" data-poster="assets/video/posters/maya-reel-2.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">MAYA SINGER · Vertical Cut</div>
       </div>
       <div class="reel-card">
-        <video src="assets/video/moonlighting.mp4" poster="assets/video/posters/moonlighting.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/moonlighting.mp4" data-poster="assets/video/posters/moonlighting.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">MOONLIGHTING · Cinematic Short</div>
       </div>
@@ -1301,7 +1365,7 @@
         <div class="label">YOEL · The Barber (Brand Story)</div>
       </div>
       <div class="reel-card wide">
-        <video src="assets/video/yoel-barber-2.mp4" poster="assets/video/posters/yoel-barber-2.jpg" muted loop playsinline preload="metadata"
+        <video src="assets/video/yoel-barber-2.mp4" data-poster="assets/video/posters/yoel-barber-2.jpg" muted loop playsinline preload="metadata"
                onmouseover="this.play()" onmouseout="this.pause()"></video>
         <div class="label">YOEL · The Barber II</div>
       </div>
@@ -1348,6 +1412,11 @@
   </div>
   <div class="lets-work">— LET'S MAKE SOMETHING —</div>
 </section>
+
+
+<a class="wa-float" href="https://wa.me/972524328862" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <footer>© 2026 — Chen Kessler · Photographer &amp; Videographer · All frames mine</footer>
 
@@ -1536,6 +1605,75 @@
     const y = (e.clientY / window.innerHeight - 0.5) * 8;
     p.style.transform = `rotate(2.5deg) translate(${x}px, ${y}px)`;
   });
+  /* ---- Lightbox navigation: arrows, counter, keys, swipe ---- */
+  (() => {
+    const galleryImgs = Array.from(document.querySelectorAll('.grid img, .rail img, .polaroid img'));
+    if (!galleryImgs.length || !lightbox) return;
+    let current = 0;
+
+    const prevBtn = document.createElement('button');
+    prevBtn.type = 'button'; prevBtn.className = 'lightbox-nav lightbox-prev';
+    prevBtn.textContent = '\u2039'; prevBtn.setAttribute('aria-label', 'Previous image');
+    const nextBtn = document.createElement('button');
+    nextBtn.type = 'button'; nextBtn.className = 'lightbox-nav lightbox-next';
+    nextBtn.textContent = '\u203A'; nextBtn.setAttribute('aria-label', 'Next image');
+    const counter = document.createElement('div');
+    counter.className = 'lightbox-counter'; counter.setAttribute('aria-hidden', 'true');
+    lightbox.append(prevBtn, nextBtn, counter);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const updateCounter = () => { counter.textContent = pad(current + 1) + ' / ' + pad(galleryImgs.length); };
+
+    const show = (i) => {
+      current = (i + galleryImgs.length) % galleryImgs.length;
+      const img = galleryImgs[current];
+      lightboxImage.src = img.currentSrc || img.src;
+      lightboxImage.alt = img.alt || 'Portfolio still';
+      lightboxCaption.textContent = img.alt || 'Portfolio still';
+      updateCounter();
+    };
+
+    galleryImgs.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        current = i;
+        lightbox.classList.remove('video-mode');
+        updateCounter();
+      });
+    });
+    lightboxVideo.addEventListener('loadstart', () => lightbox.classList.add('video-mode'));
+    lightboxImage.addEventListener('load', () => lightbox.classList.remove('video-mode'));
+
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); show(current - 1); });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); show(current + 1); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open') || lightbox.classList.contains('video-mode')) return;
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    let touchX = null;
+    lightbox.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      if (touchX === null || lightbox.classList.contains('video-mode')) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 45) show(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    }, { passive: true });
+  })();
+
+  /* ---- Lazy posters for offscreen reels ---- */
+  (() => {
+    const lazyVids = document.querySelectorAll('video[data-poster]');
+    const posterIO = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.poster = e.target.dataset.poster;
+        posterIO.unobserve(e.target);
+      }
+    }), { rootMargin: '900px 0px' });
+    lazyVids.forEach((v) => posterIO.observe(v));
+  })();
+
 </script>
 </body>
 </html>

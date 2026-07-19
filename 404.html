@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frame Not Found — Chen Kessler</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital@1&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --paper: #f4ede1;
+    --muted: #8c8676;
+    --accent: #d8c89a;
+    --line: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 6px),
+      radial-gradient(ellipse at 50% 50%, #1a1814 0%, #050505 80%);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .code {
+    font-family: 'Bebas Neue';
+    font-size: clamp(110px, 24vw, 260px);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    animation: rise .9s cubic-bezier(.22,1,.36,1) both;
+  }
+  .sub {
+    font-family: 'Cormorant Garamond';
+    font-style: italic;
+    color: var(--accent);
+    font-size: clamp(18px, 3vw, 26px);
+    margin-top: 18px;
+    animation: rise .9s cubic-bezier(.22,1,.36,1) .15s backwards;
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    animation: rise .9s ease .28s backwards;
+  }
+  .links {
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    margin-top: 38px;
+    animation: rise .9s ease .4s backwards;
+  }
+  .links a {
+    font-family: 'Bebas Neue';
+    letter-spacing: 4px;
+    font-size: 14px;
+    color: var(--paper);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 12px 26px;
+    border-radius: 999px;
+    transition: border-color .25s, color .25s, transform .25s;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .code, .sub, .hint, .links { animation: none; } }
+</style>
+</head>
+<body>
+  <div class="code">404</div>
+  <div class="sub">This frame ended up on the cutting room floor.</div>
+  <div class="hint">The page you're looking for doesn't exist — but the good stuff is one click away.</div>
+  <div class="links">
+    <a href="index.html">HOME</a>
+    <a href="commercial.html">COMMERCIAL</a>
+    <a href="art.html">ART</a>
+  </div>
+</body>
+</html>

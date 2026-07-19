@@ -7,6 +7,23 @@
 <meta name="x-apple-disable-message-reformatting" />
 <title>Chen Kessler — Filmmaker & Photographer</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Chen Kessler",
+  "jobTitle": "Filmmaker & Photographer",
+  "email": "mailto:benkessler100@gmail.com",
+  "telephone": "+972524328862",
+  "address": { "@type": "PostalAddress", "addressLocality": "Tel Aviv", "addressCountry": "IL" },
+  "sameAs": ["https://instagram.com/chenkessler"],
+  "knowsAbout": ["Photography", "Cinematography", "Film Editing", "Screenwriting"],
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "Tel Aviv University" }
+}
+</script>
+
 <meta name="description" content="Chen Kessler — filmmaker and photographer. Film student at Tel Aviv University: short films, travel stills from eight months across Asia, and personal work." />
 <meta property="og:title" content="Chen Kessler — Filmmaker & Photographer" />
 <meta property="og:description" content="Short films, stills and personal cinema — from the writing room at Tel Aviv University to the roads of Asia." />
@@ -921,6 +938,69 @@
       opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
     }
   }
+  /* ===== Lightbox navigation ===== */
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 5;
+    background: rgba(10,10,10,0.45);
+    border: 1px solid var(--line);
+    color: var(--paper);
+    font-family: 'Bebas Neue';
+    font-size: 34px; line-height: 1;
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .25s, color .25s, border-color .25s;
+    backdrop-filter: blur(6px);
+  }
+  .lightbox-nav:hover { background: var(--paper); color: #1a1610; border-color: var(--paper); }
+  .lightbox-prev { left: 22px; }
+  .lightbox-next { right: 22px; }
+  .lightbox-counter {
+    position: absolute; top: 20px; left: 26px;
+    font-size: 12px; letter-spacing: 4px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    z-index: 5;
+  }
+  .lightbox.video-mode .lightbox-nav,
+  .lightbox.video-mode .lightbox-counter { display: none; }
+  @media (max-width: 700px) {
+    .lightbox-nav { width: 44px; height: 44px; font-size: 26px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+  }
+  /* ===== Short films slate ===== */
+  .film-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+  .film-slot {
+    border: 1px dashed rgba(216,200,154,0.35);
+    border-radius: 2px;
+    padding: 34px 26px 28px;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+    transition: border-color .3s ease, transform .3s ease;
+  }
+  .film-slot:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .film-slot .no {
+    font-family: 'Bebas Neue';
+    font-size: 44px; color: rgba(244,237,225,0.16);
+    line-height: 1;
+  }
+  .film-slot h3 {
+    font-family: 'Bebas Neue';
+    letter-spacing: 3px; font-size: 19px;
+    color: var(--paper); margin: 14px 0 8px;
+  }
+  .film-slot p { color: var(--muted); font-size: 12.5px; line-height: 1.6; }
+  .film-slot .status {
+    display: inline-block; margin-top: 16px;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(216,200,154,0.4);
+    padding: 6px 12px; border-radius: 999px;
+  }
+  @media (max-width: 800px) { .film-slots { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -935,6 +1015,7 @@
 <nav>
   <a class="brand" href="#top">CHEN · KESSLER</a>
   <ul>
+    <li><a href="#films">Films</a></li>
     <li><a href="#portrait">Portrait</a></li>
     <li><a href="#travel">Travel</a></li>
     <li><a href="#bts">BTS</a></li>
@@ -945,6 +1026,7 @@
 
 <div class="topbar-scroll" aria-label="Quick navigation">
   <a href="#top">Top</a>
+  <a href="#films">Films</a>
   <a href="#portrait">Portrait</a>
   <a href="#travel">Travel</a>
   <a href="#bts">BTS</a>
@@ -1009,6 +1091,36 @@
   <p class="lede">A cinematic short from the personal archive — light, texture, patience. More films from the writing room at Tel Aviv University are on their way to this page.</p>
   <div class="featured-reel">
     <video src="assets/video/moonlighting.mp4" controls preload="metadata" poster="assets/video/posters/moonlighting.jpg"></video>
+  </div>
+</section>
+
+
+<!-- SHORT FILMS -->
+<section class="sec wrap reveal" id="films">
+  <h2>SHORT <em>films</em></h2>
+  <p class="lede">
+    Written, directed and edited between semesters at Tel Aviv University.
+    The first titles are on their way to this page — loglines, stills, and the films themselves.
+  </p>
+  <div class="film-slots">
+    <div class="film-slot">
+      <div class="no">01</div>
+      <h3>UNTITLED — ASIA DOCUMENTARY</h3>
+      <p>Eight months, eight countries, one camera that never really got put away. A long-form cut of the road.</p>
+      <span class="status">In the edit</span>
+    </div>
+    <div class="film-slot">
+      <div class="no">02</div>
+      <h3>TAU PRODUCTION 01</h3>
+      <p>First-year film — written and directed at Tel Aviv University's film program.</p>
+      <span class="status">In production</span>
+    </div>
+    <div class="film-slot">
+      <div class="no">03</div>
+      <h3>NEXT SCRIPT</h3>
+      <p>The one currently living in the notes app. Logline lands here the day it survives a table read.</p>
+      <span class="status">In development</span>
+    </div>
   </div>
 </section>
 
@@ -1331,6 +1443,75 @@
     const y = (e.clientY / window.innerHeight - 0.5) * 8;
     p.style.transform = `rotate(2.5deg) translate(${x}px, ${y}px)`;
   });
+  /* ---- Lightbox navigation: arrows, counter, keys, swipe ---- */
+  (() => {
+    const galleryImgs = Array.from(document.querySelectorAll('.grid img, .rail img, .polaroid img'));
+    if (!galleryImgs.length || !lightbox) return;
+    let current = 0;
+
+    const prevBtn = document.createElement('button');
+    prevBtn.type = 'button'; prevBtn.className = 'lightbox-nav lightbox-prev';
+    prevBtn.textContent = '\u2039'; prevBtn.setAttribute('aria-label', 'Previous image');
+    const nextBtn = document.createElement('button');
+    nextBtn.type = 'button'; nextBtn.className = 'lightbox-nav lightbox-next';
+    nextBtn.textContent = '\u203A'; nextBtn.setAttribute('aria-label', 'Next image');
+    const counter = document.createElement('div');
+    counter.className = 'lightbox-counter'; counter.setAttribute('aria-hidden', 'true');
+    lightbox.append(prevBtn, nextBtn, counter);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const updateCounter = () => { counter.textContent = pad(current + 1) + ' / ' + pad(galleryImgs.length); };
+
+    const show = (i) => {
+      current = (i + galleryImgs.length) % galleryImgs.length;
+      const img = galleryImgs[current];
+      lightboxImage.src = img.currentSrc || img.src;
+      lightboxImage.alt = img.alt || 'Portfolio still';
+      lightboxCaption.textContent = img.alt || 'Portfolio still';
+      updateCounter();
+    };
+
+    galleryImgs.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        current = i;
+        lightbox.classList.remove('video-mode');
+        updateCounter();
+      });
+    });
+    lightboxVideo.addEventListener('loadstart', () => lightbox.classList.add('video-mode'));
+    lightboxImage.addEventListener('load', () => lightbox.classList.remove('video-mode'));
+
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); show(current - 1); });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); show(current + 1); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open') || lightbox.classList.contains('video-mode')) return;
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    let touchX = null;
+    lightbox.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      if (touchX === null || lightbox.classList.contains('video-mode')) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 45) show(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    }, { passive: true });
+  })();
+
+  /* ---- Lazy posters for offscreen reels ---- */
+  (() => {
+    const lazyVids = document.querySelectorAll('video[data-poster]');
+    const posterIO = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.poster = e.target.dataset.poster;
+        posterIO.unobserve(e.target);
+      }
+    }), { rootMargin: '900px 0px' });
+    lazyVids.forEach((v) => posterIO.observe(v));
+  })();
+
 </script>
 </body>
 </html>
