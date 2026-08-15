@@ -258,6 +258,22 @@ section{position:relative}
 .g4{grid-template-columns:repeat(4,1fr)}
 /* vertical pieces run three-up so each one is still a real player */
 /* column count is set per grid so a row never ends with an empty cell */
+/* Mixed orientations: tiles grow in proportion to their own aspect ratio, so a
+   row ends up with matching heights and nothing gets cropped into the wrong
+   frame. Each tile carries its real ratio in --ar. */
+.just{display:flex;flex-wrap:wrap;gap:clamp(8px,1vw,16px)}
+.just>.vid{
+  flex-grow:var(--ar);
+  flex-basis:calc(var(--ar) * 210px);
+  aspect-ratio:var(--ar);
+  min-width:min(100%,170px);
+  /* without a cap, a clip left alone on the last row stretches to the full
+     width and dwarfs the rest of the set */
+  max-width:min(100%,46%);
+  height:auto;
+}
+.just>.vid video{position:absolute;inset:0}
+
 .verts{grid-template-columns:repeat(2,minmax(0,1fr));max-width:min(660px,52%)}
 .verts.n5{grid-template-columns:repeat(5,minmax(0,1fr));max-width:none}
 .media img,.media video,.vid video{width:100%;height:100%;object-fit:cover;background:#0c1611}
@@ -454,6 +470,10 @@ section{position:relative}
   .bar a{padding:1.25em .52em}
   .bar{font-size:clamp(11px,3vw,12.5px)}
   .verts.n5{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* one clip per row on a phone — the desktop 46% cap squashed the landscape
+     ones to 94px tall */
+  .just>.vid{max-width:none;flex-basis:100%;flex-grow:0}
+  .just>.vid[data-portrait]{max-width:66%;margin-inline:auto}
   /* the contact row wrapped into ragged pairs; stack it instead */
   .foot .rows{flex-direction:column;gap:.15em;align-items:flex-start}
   .foot .fine{gap:6px}
@@ -694,7 +714,7 @@ section{position:relative}
         <h3 class="dsp">Personal<span class="lat">Micro-films shot on film sets</span></h3>
         <p>Short exercises, one idea each — a movement, an edit, a look.</p>
       </div>
-      <div class="media verts n5" data-vid="pp-abcd|ABCD,pp-balance|Balance,pp-break-the-pattern|Break the Pattern,pp-keep-pushing|Keep Pushing,pp-young-me|Young Me" data-ar="ar-916"></div>
+      <div class="media just" data-autoplay="always" data-vid="pp-abcd|ABCD|0.5625,pp-balance|Balance|1.7778,pp-break-the-pattern|Break the Pattern|1.7778,pp-keep-pushing|Keep Pushing|1.7778,pp-young-me|Young Me|1.7778"></div>
     </article>
   </div>
 </section>
@@ -950,8 +970,13 @@ section{position:relative}
   document.querySelectorAll('[data-vid]').forEach(function (grid) {
     var ar = grid.dataset.ar || 'ar-916';
     grid.innerHTML = grid.dataset.vid.split(',').map(function (item) {
-      var b = item.split('|'), name = b[0], label = b[1] || '';
-      return '<div class="vid ' + ar + '" data-src="' + VID + name + '.mp4">' +
+      var b = item.split('|'), name = b[0], label = b[1] || '', ratio = b[2];
+      // a third field is the clip's true aspect ratio; without it the tile
+      // falls back to the grid's shared class
+      var cls = ratio ? 'vid' : 'vid ' + ar;
+      var style = ratio ? ' style="--ar:' + ratio + '"' : '';
+      if (ratio && parseFloat(ratio) < 1) { style += ' data-portrait'; }
+      return '<div class="' + cls + '"' + style + ' data-src="' + VID + name + '.mp4">' +
              '<video poster="' + VID + 'posters/' + name + '.jpg" muted loop playsinline preload="none"></video>' +
              '<div class="play"></div>' +
              (label ? '<div class="tag">' + label + '</div>' : '') +
@@ -1029,17 +1054,26 @@ section{position:relative}
   var mayAutoplay = window.innerWidth > 760 && !conn.saveData &&
                     !/2g|slow-2g/.test(conn.effectiveType || '');
 
-  if (mayAutoplay && 'IntersectionObserver' in window) {
+  if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var box = e.target, v = box.querySelector('video');
         // anything long carries controls — those are the viewer's to drive
         if (!v || v.hasAttribute('controls')) { return; }
+        // a grid may opt in to autoplay on phones too, for clips light enough
+        // that pulling them on a mobile connection is not rude
+        if (!mayAutoplay && !box.closest('[data-autoplay="always"]')) { return; }
         if (e.isIntersecting) {
           v = attach(box);
           var p = v.play();
-          if (p && p.catch) { p.catch(function () {}); }
-          box.classList.add('playing');
+          // only claim it is playing once the browser agrees — if autoplay is
+          // refused the play badge has to stay up so the viewer knows to tap
+          if (p && p.then) {
+            p.then(function () { box.classList.add('playing'); })
+             .catch(function () { box.classList.remove('playing'); });
+          } else {
+            box.classList.add('playing');
+          }
         } else if (v.src) {
           v.pause();
           box.classList.remove('playing');
