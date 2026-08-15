@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
 :root{
   --paper:#efece4;
@@ -38,6 +38,16 @@ body{
 img,video{display:block;max-width:100%}
 a{color:inherit}
 .dsp{font-family:'Poppins',sans-serif}
+
+/* Hebrew keeps its own face and its own direction. Without dir/isolate a title
+   like "שלום, אבא" renders its comma on the wrong side once it sits inside an
+   English-language document. */
+.he{
+  font-family:'Rubik',sans-serif;
+  direction:rtl;unicode-bidi:isolate;
+  font-weight:500;letter-spacing:0;
+}
+h3 .he{font-weight:600}
 
 /* Film grain over everything, plus a much broader mottle for the tooth of the
    stock. They sit in separate layers because one blend at one opacity either
@@ -170,6 +180,7 @@ section{position:relative}
 .xp li{list-style:none;position:relative;padding-left:20px}
 .xp li::before{content:"";position:absolute;left:0;top:.42em;width:9px;height:9px;border-radius:50%;background:var(--green)}
 .xp b{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(15px,1.12vw,19px)}
+.xp b small{font-weight:500;font-size:.76em;opacity:.6;letter-spacing:.01em}
 .xp i{display:block;font-style:normal;font-weight:600;font-size:clamp(13px,1vw,16px);opacity:.8}
 
 .tools{display:flex;flex-wrap:wrap;gap:9px;margin-top:clamp(12px,1.4vw,20px)}
@@ -423,9 +434,9 @@ section{position:relative}
     flex-direction:column;align-items:center;gap:0;
     font-size:clamp(86px,31vw,190px);
   }
-  .mark span{line-height:.88}
-  .mark span:first-of-type{transform:translateX(.22em)}
-  .mark span.thin{transform:translateX(-.22em)}
+  /* both words centre on one axis — offsetting them made the block read
+     lopsided and pulled the eye right then back left */
+  .mark span{line-height:.88;text-align:center}
   /* sits on the join between the two lines rather than on top of "folio" */
   .cam{
     left:50%;top:43%;bottom:auto;translate:-50% -50%;
@@ -437,6 +448,8 @@ section{position:relative}
   .foot .rows a{padding-block:.85em}
   .info a{padding-block:.5em}
   .bar nav{gap:0}
+  .bar a{padding:1.25em .52em}
+  .bar{font-size:clamp(11px,3vw,12.5px)}
   .verts.n5{grid-template-columns:repeat(2,minmax(0,1fr))}
   /* the contact row wrapped into ragged pairs; stack it instead */
   .foot .rows{flex-direction:column;gap:.15em;align-items:flex-start}
@@ -529,11 +542,11 @@ section{position:relative}
       <div class="col">
         <span class="pill">Film Credits</span>
         <ul class="xp">
-          <li><b>Shalom, Aba</b><i>Camera chief · Colour grading · Sound design</i></li>
-          <li><b>Erachim U'Medaliot</b><i>Editor · Colour grading · Sound design</i></li>
-          <li><b>Kaktusim</b><i>Camera chief · Colour grading</i></li>
-          <li><b>Ot Kayin</b><i>Colour grading</i></li>
-          <li><b>Lottem — short documentary</b><i>Director · Script · Editor</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">שלום, אבא</span> <small>Shalom, Aba</small></b><i>Camera chief · Colour grading · Sound design</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">ערכים ומדליות</span> <small>Erachim U'Medaliot</small></b><i>Editor · Colour grading · Sound design</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">קקטוסים</span> <small>Kaktusim</small></b><i>Camera chief · Colour grading</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">אות קין</span> <small>Ot Kayin</small></b><i>Colour grading</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">לוטם</span> <small>Lottem — short documentary</small></b><i>Director · Script · Editor</i></li>
         </ul>
       </div>
 
@@ -603,7 +616,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Lottem<span class="lat">Short documentary · 3 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">לוטם</span><span class="lat">Lottem · Short documentary · 3 min</span></h3>
         <div>
           <p>A short documentary I wrote, directed and cut.</p>
           <div class="roles"><span>Director</span><span>Script</span><span>Editor</span></div>
@@ -617,7 +630,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Shalom, Aba<span class="lat">Short film · 10 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">שלום, אבא</span><span class="lat">Shalom, Aba · Short film · 10 min</span></h3>
         <div>
           <p>A ten-minute short. I ran the camera, graded the film and built its sound.</p>
           <div class="roles"><span>Camera chief</span><span>Colour grading</span><span>Sound design</span></div>
@@ -632,7 +645,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Kaktusim<span class="lat">Short film · 6 min · subtitled</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">קקטוסים</span><span class="lat">Kaktusim · Short film · 6 min · subtitled</span></h3>
         <div>
           <p>Final cut with subtitles. Six minutes, one thread, nowhere to hide a weak frame.</p>
           <div class="roles"><span>Camera chief</span><span>Colour grading</span></div>
@@ -646,7 +659,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Ot Kayin<span class="lat">Short film · 7 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">אות קין</span><span class="lat">Ot Kayin · Short film · 7 min</span></h3>
         <div>
           <p>Seven minutes graded in DaVinci Resolve — building the film's contrast and palette out of the raw material.</p>
           <div class="roles"><span>Colour grading</span></div>
@@ -661,7 +674,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Erachim U'Medaliot<span class="lat">Short film · 10 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">ערכים ומדליות</span><span class="lat">Erachim U'Medaliot · Short film · 10 min</span></h3>
         <div>
           <p>Cut, graded and sound-designed end to end.</p>
           <div class="roles"><span>Editor</span><span>Colour grading</span><span>Sound design</span></div>
@@ -761,7 +774,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Dor Shemer<span class="lat">Music video · 3:31</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">דור שמר</span><span class="lat">Dor Shemer · Tmuna Bli Shem · Music video · 3:31</span></h3>
         <p>Shot, cut and graded to sit with the record.</p>
       </div>
       <div class="vid player ar-169" data-src="assets/v3/video/dor-shemer.mp4">
@@ -772,7 +785,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Maya<span class="lat">Song teaser · 0:31</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">מאיה</span><span class="lat">Maya · Song teaser · 0:31</span></h3>
         <p>A song teaser cut wide and vertical from the same shoot.</p>
       </div>
       <div class="vid player ar-169" data-src="assets/v3/video/maya-wide.mp4">
