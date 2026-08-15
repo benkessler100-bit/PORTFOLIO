@@ -282,6 +282,13 @@ section{position:relative}
 .ar-916{aspect-ratio:9/16}
 .ar-169{aspect-ratio:16/9}
 .ar-219{aspect-ratio:2.1/1}
+/* Justified gallery: rows are measured in JS so every row spans the full
+   width exactly, each frame keeps its own proportions, and the gaps stay even.
+   Nothing is cropped to a shared shape and no row is left part-empty. */
+.justg{display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(6px,.7vw,12px)}
+.justg>.shot{flex:none}
+.justg>.shot img{width:100%;height:100%;object-fit:cover}
+
 .shot{position:relative;overflow:hidden;border-radius:8px;cursor:zoom-in}
 .shot img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .shot:hover img{transform:scale(1.045)}
@@ -869,7 +876,7 @@ section{position:relative}
         <div class="vid ar-169" data-src="assets/v3/video/travel-mongolia-3.mp4"><video poster="assets/v3/video/posters/travel-mongolia-3.jpg" muted loop playsinline preload="none"></video><div class="play"></div><div class="tag">Mongolia — green valley</div></div>
         <div class="vid ar-169" data-src="assets/v3/video/travel-japan.mp4"><video poster="assets/v3/video/posters/travel-japan.jpg" muted loop playsinline preload="none"></video><div class="play"></div><div class="tag">Japan — video postcard</div></div>
       </div>
-      <div class="media g4" data-list="travel/travel|1,4,10,11,12,17,21,26,46,50,55,57" data-ar="ar-34"></div>
+      <div class="media justg" data-shots="travel/travel|1:0.6667,4:1.5000,7:1.2509,10:1.5000,11:0.6683,17:1.5000,21:0.6661,23:0.8006,26:0.8089,27:0.6667,34:0.8000,38:2.0000,41:0.6667,44:0.8000,46:2.0000,49:1.2500,50:2.0000,55:1.5000"></div>
     </article>
   </div>
 </section>
@@ -984,6 +991,90 @@ section{position:relative}
       return figure(IMG + path[0] + '/' + path[1] + '-' + pad(+n) + '.jpg', ar);
     }).join('');
   });
+
+  /* ---- `data-shots="folder/prefix|n:ratio,…"` → a justified gallery ---- */
+  var justified = [].slice.call(document.querySelectorAll('[data-shots]'));
+  justified.forEach(function (grid) {
+    var bits = grid.dataset.shots.split('|');
+    var path = bits[0].split('/');
+    grid.innerHTML = bits[1].split(',').map(function (item) {
+      var t = item.split(':'), n = +t[0], ar = t[1];
+      var src = IMG + path[0] + '/' + path[1] + '-' + pad(n) + '.jpg';
+      return '<figure class="shot" data-ar="' + ar + '">' +
+             '<img loading="lazy" decoding="async" src="' + src + '" alt="" /></figure>';
+    }).join('');
+  });
+
+  var layoutJustified = function (grid) {
+    var gap = parseFloat(getComputedStyle(grid).columnGap) || 10;
+    // clientWidth rounds up, so widths summed against it can exceed the real
+    // line box by a fraction and flex drops the last item to the next row.
+    // Measure fractionally and keep half a pixel in hand.
+    var W = grid.getBoundingClientRect().width - 0.5;
+    if (W <= 0) { return; }
+    // a higher target flushes rows sooner, so a phone gets fewer frames per row
+    // and taller ones rather than a strip of 94px thumbnails
+    var target = W < 620 ? 230 : (W < 1000 ? 250 : 290);
+    var kids = [].slice.call(grid.children);
+    var ratio = function (el) { return parseFloat(el.dataset.ar); };
+
+    // group into rows first
+    var rows = [], row = [], sum = 0;
+    kids.forEach(function (el) {
+      row.push(el);
+      sum += ratio(el);
+      if ((W - gap * (row.length - 1)) / sum <= target) {
+        rows.push(row); row = []; sum = 0;
+      }
+    });
+    // A leftover tail is what leaves a hole on the right of the last row, so
+    // fold it back into the row before it: that row simply runs a little
+    // shorter and every row still spans the full width.
+    if (row.length) {
+      if (rows.length) { rows[rows.length - 1] = rows[rows.length - 1].concat(row); }
+      else { rows.push(row); }
+    }
+
+    rows.forEach(function (r) {
+      var rsum = r.reduce(function (a, el) { return a + ratio(el); }, 0);
+      var avail = W - gap * (r.length - 1);
+      var h = avail / rsum;
+      if (h > target * 1.7) { h = target * 1.7; }   // guard a degenerate single row
+      var used = 0;
+      r.forEach(function (el, i) {
+        var w = (i === r.length - 1) ? Math.round(avail - used)
+                                     : Math.floor(h * ratio(el));
+        used += w;
+        el.style.width = w + 'px';
+        el.style.height = Math.round(h) + 'px';
+      });
+    });
+  };
+
+  var relayout = function () { justified.forEach(layoutJustified); };
+  relayout();
+
+  // The first pass runs before the page has settled — once content fills in and
+  // a scrollbar appears the container loses ~15px, which left every row short
+  // of the right edge. Watch the container's width and re-run whenever it
+  // actually changes, guarding against the feedback loop that would otherwise
+  // come from this layout changing the grid's own height.
+  if ('ResizeObserver' in window) {
+    var lastW = 0;
+    var ro = new ResizeObserver(function (entries) {
+      var w = entries[0].contentRect.width;
+      if (Math.abs(w - lastW) < 1) { return; }
+      lastW = w;
+      relayout();
+    });
+    justified.forEach(function (g) { ro.observe(g); });
+  } else {
+    var rt;
+    window.addEventListener('resize', function () {
+      clearTimeout(rt); rt = setTimeout(relayout, 120);
+    });
+  }
+  window.addEventListener('load', relayout);
 
   /* ---- `data-vid="name|Label,…"` → a grid of players ---- */
   document.querySelectorAll('[data-vid]').forEach(function (grid) {
