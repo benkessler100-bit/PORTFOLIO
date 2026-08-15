@@ -55,7 +55,8 @@ body::before{
   background-size:640px 640px;
 }
 
-.wrap{padding-inline:var(--pad)}
+/* content stops widening past this; beyond it the page just grew gaps */
+.wrap{padding-inline:var(--pad);max-width:1560px;margin-inline:auto}
 section{position:relative}
 .paper{background:var(--paper)}
 .forest{background:var(--green);color:var(--cream)}
@@ -79,11 +80,19 @@ section{position:relative}
 .bar a:hover{opacity:1}
 
 /* ---------- hero ---------- */
-.hero{padding-bottom:clamp(24px,4vw,56px)}
+.hero{
+  padding-bottom:clamp(24px,4vw,56px);
+  min-height:min(94vh,940px);display:flex;flex-direction:column;
+}
+/* bar stays pinned at the top; the wordmark and its caption centre in what's
+   left, so the hero fills the first screen without dragging the nav down */
+.hero .wrap{flex:1;display:flex;flex-direction:column}
+.hero .mark{margin-top:auto}
+.hero .mark-foot{margin-bottom:auto}
 .mark{
   position:relative;display:flex;align-items:flex-end;justify-content:center;
-  color:var(--green);margin-top:clamp(16px,3vw,40px);
-  font-size:clamp(56px,14.6vw,238px);gap:.62em;
+  color:var(--green);margin-top:clamp(10px,2vw,26px);
+  font-size:clamp(56px,15vw,300px);gap:.62em;
 }
 .mark span{font-size:1em;line-height:.82;letter-spacing:-.05em;font-weight:600}
 .mark span.thin{font-weight:300;font-style:italic;letter-spacing:-.035em}
@@ -123,18 +132,18 @@ section{position:relative}
 .mark-foot .yr{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.1vw,16px);opacity:.55}
 
 /* ---------- statement ---------- */
-.state{padding-block:clamp(40px,6vw,100px);max-width:1100px}
+.state{padding-block:clamp(34px,4.4vw,74px);max-width:1100px}
 .state h1{
   font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.035em;
   font-size:clamp(26px,4.2vw,64px);line-height:1.05;
 }
 .state h1 em{font-style:italic;font-weight:300;opacity:.72}
-.state p{margin-top:1.2em;max-width:60ch;font-size:clamp(14px,1.05vw,17px);line-height:1.75;opacity:.8}
+.state p{margin-top:1.1em;max-width:56ch;font-size:clamp(15px,1.12vw,19px);line-height:1.7;opacity:.82}
 
 /* ---------- profile ---------- */
 .profile{
-  display:grid;grid-template-columns:clamp(230px,26vw,340px) minmax(0,1fr) clamp(200px,20vw,280px);
-  gap:clamp(20px,2.8vw,48px);padding-block:clamp(34px,5vw,86px);align-items:start;
+  display:grid;grid-template-columns:clamp(230px,24vw,320px) minmax(0,1.15fr) minmax(0,.62fr);
+  gap:clamp(20px,2.4vw,40px);padding-block:clamp(30px,3.6vw,62px);align-items:start;
 }
 .card{
   background:var(--green);color:var(--cream);border-radius:var(--r);overflow:hidden;
@@ -144,19 +153,19 @@ section{position:relative}
 .card .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,38,28,.1) 22%,rgba(20,38,28,.55) 52%,rgba(20,38,28,.95) 86%)}
 .card .txt{position:relative;padding:clamp(18px,1.9vw,28px)}
 .card h2{font-family:'Poppins',sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:600;letter-spacing:-.03em}
-.card p{margin-top:.55em;font-size:clamp(12.5px,.94vw,14.5px);line-height:1.62;opacity:.9}
+.card p{margin-top:.55em;font-size:clamp(13px,1vw,16px);line-height:1.6;opacity:.9}
 
 .pill{
   display:inline-block;background:var(--green);color:var(--cream);border-radius:999px;
   padding:.5em 1.5em;font-family:'Poppins',sans-serif;font-weight:600;
   font-size:clamp(13px,1.02vw,16px);
 }
-.col+.col{margin-top:clamp(24px,2.8vw,40px)}
-.xp{margin-top:clamp(12px,1.4vw,22px);display:grid;gap:clamp(13px,1.4vw,19px)}
+.col+.col{margin-top:clamp(20px,2.2vw,32px)}
+.xp{margin-top:clamp(11px,1.2vw,18px);display:grid;gap:clamp(11px,1.1vw,15px)}
 .xp li{list-style:none;position:relative;padding-left:20px}
 .xp li::before{content:"";position:absolute;left:0;top:.42em;width:9px;height:9px;border-radius:50%;background:var(--green)}
-.xp b{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(14px,1.05vw,17px)}
-.xp i{display:block;font-style:normal;font-weight:600;font-size:clamp(12px,.92vw,14px);opacity:.8}
+.xp b{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(15px,1.12vw,19px)}
+.xp i{display:block;font-style:normal;font-weight:600;font-size:clamp(13px,1vw,16px);opacity:.8}
 
 .tools{display:flex;flex-wrap:wrap;gap:9px;margin-top:clamp(12px,1.4vw,20px)}
 /* app tiles in each product's own colours rather than lettered blocks */
@@ -176,7 +185,7 @@ section{position:relative}
   display:flex;align-items:center;gap:.5em;
 }
 .tools .app.brand em{font-style:normal;font-weight:500;opacity:.66;letter-spacing:.04em}
-.info{margin-top:clamp(12px,1.4vw,20px);display:grid;gap:clamp(11px,1.2vw,17px);font-size:clamp(12.5px,.92vw,14.5px)}
+.info{margin-top:clamp(11px,1.2vw,17px);display:grid;gap:clamp(10px,1vw,14px);font-size:clamp(13px,1vw,16px)}
 .info b{display:block;font-family:'Poppins',sans-serif;font-size:clamp(14px,1.05vw,17px);font-weight:600}
 .info a{text-decoration:none;opacity:.78;display:inline-block;padding-block:.25em}
 .info a:hover{opacity:1;text-decoration:underline}
@@ -184,7 +193,7 @@ section{position:relative}
 
 /* ---------- section heading ---------- */
 .head{
-  padding-block:clamp(34px,5vw,86px) clamp(14px,1.8vw,26px);
+  padding-block:clamp(28px,3.6vw,62px) clamp(12px,1.4vw,22px);
   display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
 }
 .head h2{
@@ -199,7 +208,7 @@ section{position:relative}
 .head .sub{font-size:clamp(11.5px,.9vw,14px);letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.55;padding-bottom:.6em}
 
 /* ---------- a piece: caption row above, big player below ---------- */
-.piece{padding-block:clamp(26px,3.6vw,60px)}
+.piece{padding-block:clamp(22px,2.6vw,44px)}
 .piece-head{
   display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
   gap:clamp(14px,2.4vw,44px);align-items:end;
@@ -212,7 +221,7 @@ section{position:relative}
   display:block;font-size:clamp(11px,.3em,15px);letter-spacing:.13em;text-transform:uppercase;
   opacity:.6;margin-top:.9em;font-weight:600;
 }
-.piece-head p{font-size:clamp(13px,.98vw,16px);line-height:1.7;opacity:.76;max-width:46ch}
+.piece-head p{font-size:clamp(14px,1.06vw,18px);line-height:1.65;opacity:.78;max-width:44ch}
 /* the client's own mark, masked to one ink like the wall below */
 .client{display:flex;gap:clamp(12px,1.6vw,26px);align-items:center;justify-content:flex-end}
 .client i{
@@ -267,7 +276,7 @@ section{position:relative}
 }
 
 /* ---------- brand logo wall ---------- */
-.collab{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,70px);align-items:center;padding-block:clamp(40px,6vw,100px)}
+.collab{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3.2vw,56px);align-items:center;padding-block:clamp(34px,4.4vw,74px)}
 .collab h2{
   font-family:'Poppins',sans-serif;font-weight:600;text-transform:uppercase;color:var(--green);
   font-size:clamp(40px,7.2vw,120px);line-height:.82;letter-spacing:-.055em;
@@ -308,6 +317,33 @@ section{position:relative}
 #lb .x{top:6px;right:10px;font-size:30px}
 #lb .p{left:4px;top:50%;translate:0 -50%}
 #lb .n{right:4px;top:50%;translate:0 -50%}
+
+/* ---------- loading screen ---------- */
+#load{
+  position:fixed;inset:0;z-index:200;background:var(--paper);
+  display:grid;place-items:center;
+  transition:opacity .7s var(--ease),visibility .7s;
+}
+#load.done{opacity:0;visibility:hidden}
+#load .lw{
+  font-family:'Poppins',sans-serif;font-weight:600;color:var(--green);
+  font-size:clamp(30px,6vw,74px);letter-spacing:-.045em;line-height:1;
+  display:flex;align-items:baseline;gap:.06em;
+}
+#load .lw em{font-weight:300;font-style:italic}
+#load .lbar{
+  margin-top:clamp(18px,2.4vw,30px);width:clamp(140px,18vw,260px);height:2px;
+  background:color-mix(in srgb,var(--green) 20%,transparent);overflow:hidden;
+}
+#load .lbar span{
+  display:block;height:100%;width:0;background:var(--green);
+  transition:width .35s var(--ease);
+}
+#load .pct{
+  margin-top:.9em;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:var(--green);opacity:.55;
+}
+@media (prefers-reduced-motion:reduce){#load{transition:none}}
 
 /* ---------- scroll motion ---------- */
 /* one easing curve for the whole page, so nothing arrives on a different clock */
@@ -399,6 +435,14 @@ section{position:relative}
 </style>
 </head>
 <body>
+
+<div id="load" role="status" aria-live="polite" aria-label="Loading">
+  <div>
+    <div class="lw">Port<em>folio</em></div>
+    <div class="lbar"><span></span></div>
+    <div class="pct">0%</div>
+  </div>
+</div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <filter id="tearf" x="-10%" y="-80%" width="120%" height="260%">
@@ -540,6 +584,20 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
+        <h3 class="dsp">Lottem<span class="lat">Short documentary · 3 min</span></h3>
+        <div>
+          <p>A short documentary I wrote, directed and cut.</p>
+          <div class="roles"><span>Director</span><span>Script</span><span>Editor</span></div>
+        </div>
+      </div>
+      <div class="vid player ar-169" data-src="assets/v3/video/lottem-doco.mp4">
+        <video poster="assets/v3/video/posters/lottem-doco.jpg" playsinline controls preload="none"></video>
+        <div class="play"></div>
+      </div>
+    </article>
+
+    <article class="piece rv">
+      <div class="piece-head">
         <h3 class="dsp">Shalom, Aba<span class="lat">Short film · 10 min</span></h3>
         <div>
           <p>A ten-minute short. I ran the camera, graded the film and built its sound.</p>
@@ -551,20 +609,6 @@ section{position:relative}
         <div class="play"></div>
       </div>
       <div class="media g4" data-seq="film-shalom-aba/shalom-aba|1-4" data-ar="ar-169"></div>
-    </article>
-
-    <article class="piece rv">
-      <div class="piece-head">
-        <h3 class="dsp">Erachim U'Medaliot<span class="lat">Short film · 10 min</span></h3>
-        <div>
-          <p>Cut, graded and sound-designed end to end.</p>
-          <div class="roles"><span>Editor</span><span>Colour grading</span><span>Sound design</span></div>
-        </div>
-      </div>
-      <div class="vid player ar-169" data-src="assets/v3/video/erachim-medaliot.mp4">
-        <video poster="assets/v3/video/posters/erachim-medaliot.jpg" playsinline controls preload="none"></video>
-        <div class="play"></div>
-      </div>
     </article>
 
     <article class="piece rv">
@@ -598,14 +642,14 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Lottem<span class="lat">Short documentary · 3 min</span></h3>
+        <h3 class="dsp">Erachim U'Medaliot<span class="lat">Short film · 10 min</span></h3>
         <div>
-          <p>A short documentary I wrote, directed and cut.</p>
-          <div class="roles"><span>Director</span><span>Script</span><span>Editor</span></div>
+          <p>Cut, graded and sound-designed end to end.</p>
+          <div class="roles"><span>Editor</span><span>Colour grading</span><span>Sound design</span></div>
         </div>
       </div>
-      <div class="vid player ar-169" data-src="assets/v3/video/lottem-doco.mp4">
-        <video poster="assets/v3/video/posters/lottem-doco.jpg" playsinline controls preload="none"></video>
+      <div class="vid player ar-169" data-src="assets/v3/video/erachim-medaliot.mp4">
+        <video poster="assets/v3/video/posters/erachim-medaliot.jpg" playsinline controls preload="none"></video>
         <div class="play"></div>
       </div>
     </article>
@@ -627,18 +671,6 @@ section{position:relative}
       <h2 class="dsp">Brand<br />Films</h2>
       <span class="sub">Concept to delivery</span>
     </div>
-
-    <article class="piece rv">
-      <div class="piece-head">
-        <h3 class="dsp">Event Planner<span class="lat">Brand film · 1:40</span></h3>
-        <p>A full brand film made end to end — concept, shoot, edit and grade.</p>
-        <div class="client"><i style="-webkit-mask-image:url('assets/v3/img/logos/idan-event-planner.png');mask-image:url('assets/v3/img/logos/idan-event-planner.png')"></i></div>
-      </div>
-      <div class="vid player ar-169" data-src="assets/v3/video/event-planner.mp4">
-        <video poster="assets/v3/video/posters/event-planner.jpg" playsinline controls preload="none"></video>
-        <div class="play"></div>
-      </div>
-    </article>
 
     <article class="piece rv">
       <div class="piece-head">
@@ -666,8 +698,20 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp">Fashion &amp; Food<span class="lat">Chicode · Makisu · Stills</span></h3>
-        <p>Campaign and menu stills — streetwear on the street, plates as they leave the kitchen.</p>
+        <h3 class="dsp">Event Planner<span class="lat">Brand film · 1:40</span></h3>
+        <p>A full brand film made end to end — concept, shoot, edit and grade.</p>
+        <div class="client"><i style="-webkit-mask-image:url('assets/v3/img/logos/idan-event-planner.png');mask-image:url('assets/v3/img/logos/idan-event-planner.png')"></i></div>
+      </div>
+      <div class="vid player ar-169" data-src="assets/v3/video/event-planner.mp4">
+        <video poster="assets/v3/video/posters/event-planner.jpg" playsinline controls preload="none"></video>
+        <div class="play"></div>
+      </div>
+    </article>
+
+    <article class="piece rv">
+      <div class="piece-head">
+        <h3 class="dsp">Fashion<span class="lat">Chicode · Campaign stills</span></h3>
+        <p>Campaign stills — streetwear shot on the street, in the light it was made for.</p>
         <div class="client"><i style="-webkit-mask-image:url('assets/v3/img/logos/chicode-mens-fasion.png');mask-image:url('assets/v3/img/logos/chicode-mens-fasion.png')"></i><i style="-webkit-mask-image:url('assets/v3/img/logos/makisu-sushi.png');mask-image:url('assets/v3/img/logos/makisu-sushi.png')"></i></div>
       </div>
       <div class="media g3" data-seq="fashion/fashion|1-6" data-ar="ar-34"></div>
@@ -682,6 +726,19 @@ section{position:relative}
       <h2 class="dsp">Music<br />&amp; Live</h2>
       <span class="sub">Clips · Shows · Dance</span>
     </div>
+
+    <article class="piece rv" style="padding-bottom:clamp(34px,5vw,80px)">
+      <div class="piece-head">
+        <h3 class="dsp">Dan Odiz<span class="lat">Dance performance · 1:29</span></h3>
+        <p>A full performance shot and cut for the stage — plus stills from the live shows.</p>
+        <div class="client"><i style="-webkit-mask-image:url('assets/v3/img/logos/dan-odiz-dancing-college.png');mask-image:url('assets/v3/img/logos/dan-odiz-dancing-college.png')"></i></div>
+      </div>
+      <div class="vid player ar-169" data-src="assets/v3/video/dan-odiz.mp4">
+        <video poster="assets/v3/video/posters/dan-odiz.jpg" playsinline controls preload="none"></video>
+        <div class="play"></div>
+      </div>
+      <div class="media g3" data-seq="live/live|3-8" data-ar="ar-34"></div>
+    </article>
 
     <article class="piece rv">
       <div class="piece-head">
@@ -708,19 +765,6 @@ section{position:relative}
         <div class="vid ar-916" data-src="assets/v3/video/moonlighting.mp4"><video poster="assets/v3/video/posters/moonlighting.jpg" playsinline controls preload="none"></video><div class="play"></div><div class="tag">Moonlighting</div></div>
       </div>
     </article>
-
-    <article class="piece rv" style="padding-bottom:clamp(34px,5vw,80px)">
-      <div class="piece-head">
-        <h3 class="dsp">Dan Odiz<span class="lat">Dance performance · 1:29</span></h3>
-        <p>A full performance shot and cut for the stage — plus stills from the live shows.</p>
-        <div class="client"><i style="-webkit-mask-image:url('assets/v3/img/logos/dan-odiz-dancing-college.png');mask-image:url('assets/v3/img/logos/dan-odiz-dancing-college.png')"></i></div>
-      </div>
-      <div class="vid player ar-169" data-src="assets/v3/video/dan-odiz.mp4">
-        <video poster="assets/v3/video/posters/dan-odiz.jpg" playsinline controls preload="none"></video>
-        <div class="play"></div>
-      </div>
-      <div class="media g3" data-seq="live/live|3-8" data-ar="ar-34"></div>
-    </article>
   </div>
 </section>
 
@@ -743,7 +787,13 @@ section{position:relative}
     <article class="piece rv">
       <div class="piece-head">
         <h3 class="dsp">Travel<span class="lat">Asia · eight months · 2024</span></h3>
-        <p>Eight months across Asia with a camera and no brief — the work that keeps the commercial eye honest.</p>
+        <p>Eight months across Asia with a camera and no brief — drone films over the Mongolian steppe, and the stills that keep the commercial eye honest.</p>
+      </div>
+      <div class="media g2">
+        <div class="vid ar-169" data-src="assets/v3/video/travel-mongolia-1.mp4"><video poster="assets/v3/video/posters/travel-mongolia-1.jpg" playsinline controls preload="none"></video><div class="play"></div><div class="tag">Mongolia — the steppe</div></div>
+        <div class="vid ar-169" data-src="assets/v3/video/travel-mongolia-2.mp4"><video poster="assets/v3/video/posters/travel-mongolia-2.jpg" playsinline controls preload="none"></video><div class="play"></div><div class="tag">Mongolia — the lake</div></div>
+        <div class="vid ar-169" data-src="assets/v3/video/travel-mongolia-3.mp4"><video poster="assets/v3/video/posters/travel-mongolia-3.jpg" playsinline controls preload="none"></video><div class="play"></div><div class="tag">Mongolia — green valley</div></div>
+        <div class="vid ar-169" data-src="assets/v3/video/travel-japan.mp4"><video poster="assets/v3/video/posters/travel-japan.jpg" muted loop playsinline preload="none"></video><div class="play"></div><div class="tag">Japan — video postcard</div></div>
       </div>
       <div class="media g4" data-list="travel/travel|1,4,10,11,12,17,21,26,46,50,55,57" data-ar="ar-34"></div>
     </article>
@@ -790,6 +840,47 @@ section{position:relative}
 
 <script>
 (function () {
+  /* ---- loading screen ----
+     Counts the hero's own assets rather than waiting on window.load, which on
+     this page would sit behind every lazy image and poster on a 24k-pixel-tall
+     document. It also self-releases after 4s so a stalled request can never
+     leave a visitor staring at the splash. */
+  (function () {
+    var el = document.getElementById('load');
+    if (!el) { return; }
+    var bar = el.querySelector('.lbar span'), pct = el.querySelector('.pct');
+    var critical = ['assets/v3/img/camera-rig.png', 'assets/v3/img/chen-portrait.jpg'];
+    var done = 0, total = critical.length + 1;          // +1 for the fonts
+    var tick = function () {
+      done++;
+      var p = Math.min(100, Math.round(done / total * 100));
+      bar.style.width = p + '%';
+      pct.textContent = p + '%';
+      if (done >= total) { setTimeout(release, 260); }
+    };
+    var released = false;
+    var release = function () {
+      if (released) { return; }
+      released = true;
+      bar.style.width = '100%';
+      pct.textContent = '100%';
+      el.classList.add('done');
+      setTimeout(function () { el.remove(); }, 800);
+    };
+    critical.forEach(function (src) {
+      var i = new Image();
+      i.onload = i.onerror = tick;
+      i.src = src;
+    });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(tick).catch(tick);
+    } else {
+      tick();
+    }
+    setTimeout(release, 4000);
+    window.addEventListener('load', function () { setTimeout(release, 200); });
+  })();
+
   var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
   var IMG = 'assets/v3/img/';
   var VID = 'assets/v3/video/';
