@@ -94,11 +94,6 @@ section{position:relative}
   padding-bottom:clamp(24px,4vw,56px);
   min-height:min(94vh,940px);display:flex;flex-direction:column;
 }
-@media (max-width:620px){
-  .hero{min-height:min(76vh,700px)}
-  /* bias the lockup upward instead of dead-centring it in the screen */
-  .hero .mark{margin-top:clamp(20px,6vh,60px)}
-}
 /* bar stays pinned at the top; the wordmark and its caption centre in what's
    left, so the hero fills the first screen without dragging the nav down */
 .hero .wrap{flex:1;display:flex;flex-direction:column}
@@ -431,18 +426,26 @@ section{position:relative}
      Port sits high and a touch right, the rig sits over the join, folio drops
      below and a touch left. Stacking also lets the type run much larger. */
   .mark{
-    flex-direction:column;align-items:center;gap:0;
+    flex-direction:column;align-items:center;gap:.1em;
     font-size:clamp(86px,31vw,190px);
   }
-  /* both words centre on one axis — offsetting them made the block read
-     lopsided and pulled the eye right then back left */
-  .mark span{line-height:.88;text-align:center}
+  /* a deliberate diagonal: Port sits right, folio drops left, the rig between */
+  .mark span{line-height:.88}
+  .mark span:first-of-type{transform:translateX(.46em)}
+  .mark span.thin{transform:translateX(-.46em)}
   /* sits on the join between the two lines rather than on top of "folio" */
   .cam{
     left:50%;top:43%;bottom:auto;translate:-50% -50%;
     height:.98em;
   }
-  .mark-foot{margin-top:clamp(14px,4vw,22px);gap:6px}
+  .mark-foot{gap:6px}
+  /* These need both the position after the base .hero rules *and* the same
+     two-class specificity, or `.hero .mark-foot{margin-bottom:auto}` keeps
+     winning and pushes the caption back up into the middle. */
+  .hero{min-height:min(80vh,740px)}
+  .hero .wrap{justify-content:space-between}
+  .hero .mark{margin-top:0;margin-bottom:0}
+  .hero .mark-foot{margin-top:0;margin-bottom:clamp(4px,1.5vh,14px)}
   /* thumbs need ~44px of target; only phones pay the extra padding */
   .bar a{padding:1.25em .7em}
   .foot .rows a{padding-block:.85em}
