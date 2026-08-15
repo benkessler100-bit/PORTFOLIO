@@ -426,13 +426,13 @@ section{position:relative}
      Port sits high and a touch right, the rig sits over the join, folio drops
      below and a touch left. Stacking also lets the type run much larger. */
   .mark{
-    flex-direction:column;align-items:center;gap:.1em;
+    flex-direction:column;align-items:center;gap:.2em;
     font-size:clamp(86px,31vw,190px);
   }
-  /* a deliberate diagonal: Port sits right, folio drops left, the rig between */
+  /* a deliberate diagonal: Port sits left, folio drops right, the rig between */
   .mark span{line-height:.88}
-  .mark span:first-of-type{transform:translateX(.46em)}
-  .mark span.thin{transform:translateX(-.46em)}
+  .mark span:first-of-type{transform:translateX(-.46em)}
+  .mark span.thin{transform:translateX(.46em)}
   /* sits on the join between the two lines rather than on top of "folio" */
   .cam{
     left:50%;top:43%;bottom:auto;translate:-50% -50%;
