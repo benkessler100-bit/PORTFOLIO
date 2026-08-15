@@ -84,6 +84,11 @@ section{position:relative}
   padding-bottom:clamp(24px,4vw,56px);
   min-height:min(94vh,940px);display:flex;flex-direction:column;
 }
+@media (max-width:620px){
+  .hero{min-height:min(76vh,700px)}
+  /* bias the lockup upward instead of dead-centring it in the screen */
+  .hero .mark{margin-top:clamp(20px,6vh,60px)}
+}
 /* bar stays pinned at the top; the wordmark and its caption centre in what's
    left, so the hero fills the first screen without dragging the nav down */
 .hero .wrap{flex:1;display:flex;flex-direction:column}
@@ -411,8 +416,22 @@ section{position:relative}
   .g4{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:620px){
-  .mark{gap:.52em}
-  .cam{height:1.02em}
+  /* On a phone there is height to spare and no width, so the lockup stacks:
+     Port sits high and a touch right, the rig sits over the join, folio drops
+     below and a touch left. Stacking also lets the type run much larger. */
+  .mark{
+    flex-direction:column;align-items:center;gap:0;
+    font-size:clamp(86px,31vw,190px);
+  }
+  .mark span{line-height:.88}
+  .mark span:first-of-type{transform:translateX(.22em)}
+  .mark span.thin{transform:translateX(-.22em)}
+  /* sits on the join between the two lines rather than on top of "folio" */
+  .cam{
+    left:50%;top:43%;bottom:auto;translate:-50% -50%;
+    height:.98em;
+  }
+  .mark-foot{margin-top:clamp(14px,4vw,22px);gap:6px}
   /* thumbs need ~44px of target; only phones pay the extra padding */
   .bar a{padding:1.25em .7em}
   .foot .rows a{padding-block:.85em}
