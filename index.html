@@ -11,13 +11,119 @@
 <meta property="og:title" content="Chen Kessler — Portfolio / Videographer" />
 <meta property="og:description" content="Filmmaker, videographer and colourist based in Tel Aviv. Short films, brand films, music and live." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://benkessler100-bit.github.io/PORTFOLIO/assets/v3/img/bts/bts-01.jpg" />
-<meta property="og:url" content="https://benkessler100-bit.github.io/PORTFOLIO/" />
-<link rel="canonical" href="https://benkessler100-bit.github.io/PORTFOLIO/" />
+<meta property="og:image" content="https://chenkessler.com/assets/v3/img/bts/bts-01.jpg" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="1200" />
+<meta property="og:image:alt" content="Chen Kessler on set behind a cinema camera" />
+<meta property="og:site_name" content="Chen Kessler" />
+<meta property="og:url" content="https://chenkessler.com/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="he_IL" />
+<link rel="canonical" href="https://chenkessler.com/" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://chenkessler.com/assets/v3/img/bts/bts-01.jpg" />
+<meta name="twitter:image:alt" content="Chen Kessler on set behind a cinema camera" />
+<meta name="twitter:title" content="Chen Kessler — Portfolio / Videographer" />
+<meta name="twitter:description" content="Filmmaker, videographer and colourist based in Tel Aviv. Short films, brand films, music and live." />
+
+<!-- Hebrew is served from the same document, switched client-side, but it is a
+     distinct URL so Google can index and rank it on its own. `setLang` rewrites
+     canonical/og:url and the <html lang|dir> pair to match whichever is active. -->
+<link rel="alternate" hreflang="en" href="https://chenkessler.com/" />
+<link rel="alternate" hreflang="he" href="https://chenkessler.com/?lang=he" />
+<link rel="alternate" hreflang="x-default" href="https://chenkessler.com/" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- A plain stylesheet link here blocks first paint on a third-party connection.
+     Loading it as `media="print"` makes the browser fetch it without blocking,
+     then `onload` promotes it to the real sheet. The <noscript> copy keeps the
+     fonts for anyone without JS. `display=swap` is already in the URL, so text
+     paints in the fallback face and reflows rather than sitting invisible. -->
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rubik:wght@400;500;600&display=swap" />
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rubik:wght@400;500;600&display=swap" />
+<noscript>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rubik:wght@400;500;600&display=swap" />
+</noscript>
+<!-- The hero rig is the LCP element. Preloading the WebP (91KB against the PNG's
+     713KB) is the single biggest thing on this page for perceived load speed;
+     the type attribute means a browser without WebP just ignores this line and
+     picks up the PNG from the <picture> below. -->
+<link rel="preload" as="image" href="assets/v3/img/camera-rig.webp" type="image/webp" fetchpriority="high" />
+
+<!-- Structured data. The Person block is what lets Google understand who this
+     is rather than just what words are on the page; each VideoObject is what
+     makes a film eligible for a video thumbnail in results. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://chenkessler.com/#chen",
+      "name": "Chen Kessler",
+      "alternateName": "חן קסלר",
+      "url": "https://chenkessler.com/",
+      "image": "https://chenkessler.com/assets/v3/img/chen-portrait.jpg",
+      "jobTitle": ["Filmmaker", "Videographer", "Colourist"],
+      "description": "Filmmaker, videographer and colourist based in Tel Aviv. Short films, brand films, music videos, portrait and travel photography.",
+      "email": "mailto:benkessler100@gmail.com",
+      "telephone": "+972-52-432-8862",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tel Aviv",
+        "addressCountry": "IL"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Sam Spiegel Film & Television School",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jerusalem",
+          "addressCountry": "IL"
+        }
+      },
+      "knowsAbout": [
+        "Cinematography", "Colour grading", "DaVinci Resolve", "Film editing",
+        "Sound design", "Brand films", "Music videos", "Portrait photography"
+      ],
+      "knowsLanguage": ["he", "en"],
+      "sameAs": ["https://instagram.com/chenkessler"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://chenkessler.com/#service",
+      "name": "Chen Kessler — Film & Video Production",
+      "url": "https://chenkessler.com/",
+      "image": "https://chenkessler.com/assets/v3/img/chen-portrait.jpg",
+      "founder": { "@id": "https://chenkessler.com/#chen" },
+      "areaServed": { "@type": "Country", "name": "Israel" },
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tel Aviv",
+        "addressCountry": "IL"
+      },
+      "serviceType": [
+        "Videography", "Film production", "Colour grading",
+        "Video editing", "Brand films", "Music videos", "Portrait photography"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://chenkessler.com/#site",
+      "url": "https://chenkessler.com/",
+      "name": "Chen Kessler — Portfolio",
+      "inLanguage": ["en", "he"],
+      "publisher": { "@id": "https://chenkessler.com/#chen" }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json" id="ld-videos"></script>
 <style>
 :root{
   --paper:#efece4;
@@ -159,7 +265,7 @@ section{position:relative}
   background:var(--green);color:var(--cream);border-radius:var(--r);overflow:hidden;
   position:relative;aspect-ratio:3/4;display:flex;align-items:flex-end;
 }
-.card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 38%}
+.card>img,.card>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 38%}
 .card .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,38,28,.1) 22%,rgba(20,38,28,.55) 52%,rgba(20,38,28,.95) 86%)}
 .card .txt{position:relative;padding:clamp(18px,1.9vw,28px)}
 .card h2{font-family:'Poppins',sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:600;letter-spacing:-.03em}
@@ -304,7 +410,7 @@ section{position:relative}
 .vid .play::before{content:"";border-left:.36em solid currentColor;border-block:.22em solid transparent;margin-left:.1em;font-size:clamp(54px,4.6vw,78px)}
 .vid.playing .play,.vid:has(video[controls]) .play{opacity:0;scale:.7}
 .vid .tag{
-  position:absolute;left:12px;bottom:11px;font-size:clamp(10.5px,.78vw,12px);letter-spacing:.14em;
+  position:absolute;left:12px;bottom:11px;font-size:clamp(11px,.78vw,12px);letter-spacing:.14em;
   text-transform:uppercase;font-weight:600;color:#f6f4ee;text-shadow:0 1px 10px rgba(0,0,0,.75);
   pointer-events:none;
 }
@@ -348,7 +454,7 @@ section{position:relative}
 
 /* ---------- footer ---------- */
 .foot{position:relative;color:var(--cream);overflow:hidden;min-height:clamp(380px,52vw,700px);display:flex;align-items:center}
-.foot>img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:62% 38%;will-change:transform}
+.foot>img,.foot>picture>img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:62% 38%;will-change:transform}
 .foot .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,38,28,.9) 0%,rgba(20,38,28,.4) 42%,rgba(30,58,43,.86) 100%)}
 .foot .in{position:relative;width:100%;padding-block:clamp(50px,7vw,110px)}
 .foot h2{font-family:'Poppins',sans-serif;font-weight:500;font-size:clamp(30px,5.2vw,86px);letter-spacing:-.04em;line-height:.98}
@@ -513,6 +619,150 @@ section{position:relative}
   .cam,.cam-photo{animation:none}
   html{scroll-behavior:auto}
 }
+
+/* ============================================================================
+   LANGUAGE TOGGLE + RTL
+   Everything below is scoped to [dir="rtl"] so the English page is untouched.
+   It sits at the very end of the sheet on purpose: several of these rules match
+   base rules at equal specificity, and source order is what decides.
+   ========================================================================== */
+
+/* WebP delivery wraps each still in <picture>, which would otherwise insert an
+   inline box between the image and the frame that sizes it. `display:contents`
+   removes that box from layout entirely, so every rule written against the
+   image's own geometry — object-fit, the absolute insets, the hover scale —
+   keeps behaving exactly as it did before the wrapper existed.
+   Selectors written with `>` still have to name it: see .card and .foot below. */
+picture{display:contents}
+
+/* ---- the toggle itself ---- */
+.lang{
+  display:inline-flex;align-items:center;gap:0;border:1.5px solid currentColor;
+  border-radius:999px;overflow:hidden;opacity:.75;transition:opacity .2s;
+  flex:none;line-height:1;
+}
+.lang:hover{opacity:1}
+.lang button{
+  font:inherit;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:0;color:inherit;cursor:pointer;
+  padding:.42em .72em;transition:background .2s,color .2s;
+}
+.lang button[aria-pressed="true"]{background:currentColor}
+.lang button[aria-pressed="true"] span{color:var(--paper);mix-blend-mode:normal}
+.lang button span{display:block}
+/* the wordmark bar is the only place it lives, and that bar is uppercase 12px */
+.bar .lang{font-size:.86em}
+
+/* ---- Hebrew type ----
+   Poppins and Plus Jakarta Sans carry no Hebrew glyphs at all; without this
+   every heading silently falls back to a system face and the page loses its
+   voice. Rubik is the one family already loaded that has both scripts. */
+[dir="rtl"] body,
+[dir="rtl"] .dsp,
+[dir="rtl"] .card h2,
+[dir="rtl"] .pill,
+[dir="rtl"] .xp b,
+[dir="rtl"] .info b,
+[dir="rtl"] .piece-head h3,
+[dir="rtl"] .foot h2,
+[dir="rtl"] .mark-foot .yr,
+[dir="rtl"] .state h1{font-family:'Rubik',system-ui,sans-serif}
+
+/* Latin display type is tracked tight (-.05em); Hebrew has no ascender/descender
+   rhythm to absorb that and it just collides. Reset every tracked run. */
+[dir="rtl"] .dsp,
+[dir="rtl"] .state h1,
+[dir="rtl"] .piece-head h3,
+[dir="rtl"] .foot h2,
+[dir="rtl"] .collab h2,
+[dir="rtl"] .card h2,
+[dir="rtl"] .xp b,
+[dir="rtl"] .info b{letter-spacing:0}
+/* uppercase micro-labels: Hebrew has no case, so the wide tracking that makes
+   Latin caps readable just shreds a Hebrew word. */
+[dir="rtl"] .pill,
+[dir="rtl"] .head .sub,
+[dir="rtl"] .piece-head .lat,
+[dir="rtl"] .roles span,
+[dir="rtl"] .bar,
+[dir="rtl"] .mark-foot,
+[dir="rtl"] .vid .tag,
+[dir="rtl"] .foot .rows>span,
+[dir="rtl"] .foot .fine{letter-spacing:.02em;text-transform:none}
+
+/* ---- LTR islands ----
+   Latin proper nouns, the wordmark, and anything whose glyph order carries
+   meaning must not be reordered by the bidi algorithm. */
+[dir="rtl"] .mark,
+[dir="rtl"] #load .lw,
+[dir="rtl"] .tools,
+[dir="rtl"] .logos,
+[dir="rtl"] .lang,
+[dir="rtl"] .mark-foot .yr,
+[dir="rtl"] a[href^="tel:"],
+[dir="rtl"] a[href^="mailto:"],
+[dir="rtl"] .info a,
+[dir="rtl"] .vid .play{direction:ltr;unicode-bidi:isolate}
+
+/* ---- flipped physical properties ---- */
+[dir="rtl"] .xp li{padding-left:0;padding-right:20px}
+[dir="rtl"] .xp li::before{left:auto;right:0}
+[dir="rtl"] .vid .tag{left:auto;right:12px}
+/* the play triangle points along playback, not along the text */
+[dir="rtl"] .vid .play::before{margin-left:0;margin-right:.1em}
+[dir="rtl"] .foot .rows,
+[dir="rtl"] .foot .fine{text-align:right}
+
+/* The lightbox arrows are glyphs, not text — swapping the sides keeps "next"
+   under the finger that expects it in an RTL reading order. */
+[dir="rtl"] #lb .p{left:auto;right:4px}
+[dir="rtl"] #lb .n{right:auto;left:4px}
+
+/* ---- one name per language ----
+   Every Hebrew-titled work carries both names: `.he` and `.ltr-name`. Before the
+   toggle existed the page showed them stacked, festival-style, because there was
+   only one version of the page to serve both readers. There are two now, so each
+   shows its own name and nothing else — the English page is English.
+   `.ltr-name` inherits the heading's own display type, which is what makes it
+   read at the same weight the Hebrew name did. */
+[dir="ltr"] .he{display:none}
+[dir="rtl"] .ltr-name{display:none}
+.xp b .ltr-name{display:block}
+/* `.xp b .ltr-name` is three classes and beats the plain `[dir="rtl"]` rule
+   above, so the credits list kept showing both names in Hebrew. Name the
+   context again at matching weight — the same specificity trap that kept the
+   client logos three-up on phones. */
+[dir="rtl"] .xp b .ltr-name{display:none}
+[dir="ltr"] .xp b .he{display:none}
+.xp b small{display:none}
+
+/* Hebrew has no italic. Rubik ships no oblique cut either, so `font-style:italic`
+   gets synthesised by the browser — a mechanical shear that reads as a rendering
+   fault rather than as emphasis. Carry the emphasis on weight instead. */
+[dir="rtl"] .state h1 em{font-style:normal;font-weight:300;opacity:.62}
+
+/* The Hebrew film titles carry their own dir/isolate for the English page. Once
+   the whole document is RTL that isolation makes them ragged inside a heading
+   that is already RTL, so hand direction back to the parent. */
+[dir="rtl"] .he{unicode-bidi:normal}
+
+@media (max-width:760px){
+  /* On phones the bar wraps and the toggle lands on its own line, where the
+     desktop size measures 26x17 — under both the 11px legible floor and the
+     40px tap-target floor. Size it for a thumb, not for the bar. */
+  .bar .lang{font-size:11px;margin-inline-end:auto}
+  .lang button{min-height:38px;min-width:46px;display:flex;align-items:center;justify-content:center}
+  [dir="rtl"] .foot .rows{align-items:flex-end}
+
+  /* The contact links are the one thing on this page a visitor is meant to tap,
+     and they measured 33px tall — under the 40px comfortable minimum, which
+     counts against mobile usability. Grow the hit area, not the type.
+     The hero nav is deliberately left compact: taking those to 40px too would
+     add ~17px to the wordmark bar, and that lockup is Chen's, not mine. */
+  .foot .rows a,.foot .rows span{padding-block:.95em}
+  .info a{display:inline-block;padding-block:.8em}
+  .bar nav a{padding-block:.45em}
+}
 </style>
 </head>
 <body>
@@ -539,19 +789,26 @@ section{position:relative}
       <span>Chen Kessler — Tel Aviv</span>
       <nav>
         <a href="#films">Films</a>
-        <a href="#brand">Brand</a>
+        <a href="#brand" data-he="תדמית">Brand</a>
         <a href="#music">Music</a>
         <a href="#stills">Stills</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact" data-he="צור קשר">Contact</a>
       </nav>
+      <div class="lang" role="group" aria-label="Language / שפה">
+        <button type="button" data-lang="en" aria-pressed="true" lang="en"><span>EN</span></button>
+        <button type="button" data-lang="he" aria-pressed="false" lang="he"><span>עב</span></button>
+      </div>
       <span>Available for work</span>
     </div>
 
     <div class="mark">
       <span class="dsp">Port</span>
       <div class="cam">
-      <img class="cam-photo" src="assets/v3/img/camera-rig.png"
-           alt="Sony FX3 cinema rig, lens down" />
+      <picture>
+        <source srcset="assets/v3/img/camera-rig.webp" type="image/webp" />
+        <img class="cam-photo" src="assets/v3/img/camera-rig.png" fetchpriority="high"
+             alt="Sony FX3 cinema rig, lens down" />
+      </picture>
       </div>
       <span class="dsp thin">folio</span>
     </div>
@@ -568,7 +825,7 @@ section{position:relative}
 <!-- ============ STATEMENT ============ -->
 <section class="forest">
   <div class="wrap state rv">
-    <h1 class="dsp">I shoot, cut and grade <em>story-driven</em> film — for the screen, and for brands.</h1>
+    <h1 class="dsp" data-he="אני מצלם, עורך ועושה קולור לסרטים <em>שיש בהם סיפור</em> — למסך, ולמותגים.">I shoot, cut and grade <em>story-driven</em> film — for the screen, and for brands.</h1>
     <p>Filmmaker, videographer and colourist based in Tel Aviv, studying at the Sam Spiegel Film &amp; Television School in Jerusalem. Five short films behind the camera, in the edit and on the grade; brand films and music work for clients across the country; and stills from the road.</p>
   </div>
 </section>
@@ -579,7 +836,10 @@ section{position:relative}
 <section class="paper" id="about">
   <div class="wrap profile">
     <figure class="card rv">
-      <img src="assets/v3/img/chen-portrait.jpg" alt="Portrait of Chen Kessler" />
+      <picture>
+        <source srcset="assets/v3/img/chen-portrait.webp" type="image/webp" />
+        <img src="assets/v3/img/chen-portrait.jpg" loading="lazy" decoding="async" alt="Portrait of Chen Kessler" />
+      </picture>
       <div class="veil"></div>
       <figcaption class="txt">
         <h2 class="dsp">Hey!</h2>
@@ -591,11 +851,11 @@ section{position:relative}
       <div class="col">
         <span class="pill">Film Credits</span>
         <ul class="xp">
-          <li><b><span class="he" lang="he" dir="rtl">שלום, אבא</span> <small>Shalom, Aba</small></b><i>Camera chief · Colour grading · Sound design</i></li>
-          <li><b><span class="he" lang="he" dir="rtl">ערכים ומדליות</span> <small>Erachim U'Medaliot</small></b><i>Editor · Colour grading · Sound design</i></li>
-          <li><b><span class="he" lang="he" dir="rtl">קקטוסים</span> <small>Kaktusim</small></b><i>Camera chief · Colour grading</i></li>
-          <li><b><span class="he" lang="he" dir="rtl">אות קין</span> <small>Ot Kayin</small></b><i>Colour grading</i></li>
-          <li><b><span class="he" lang="he" dir="rtl">לוטם</span> <small>Lottem — short documentary</small></b><i>Director · Script · Editor</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">שלום, אבא</span><span class="ltr-name">Shalom, Aba</span></b><i>Camera chief · Colour grading · Sound design</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">ערכים ומדליות</span><span class="ltr-name">Erachim U'Medaliot</span></b><i>Editor · Colour grading · Sound design</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">קקטוסים</span><span class="ltr-name">Kaktusim</span></b><i>Camera chief · Colour grading</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">אות קין</span><span class="ltr-name">Ot Kayin</span></b><i>Colour grading</i></li>
+          <li><b><span class="he" lang="he" dir="rtl">לוטם</span><span class="ltr-name">Lottem</span></b><i>Director · Script · Editor</i></li>
         </ul>
       </div>
 
@@ -646,7 +906,7 @@ section{position:relative}
         <span class="pill">Information</span>
         <div class="info">
           <div><b>Based</b>Tel Aviv, Israel</div>
-          <div><b>Contact</b><a href="tel:+972524328862">+972 52-432-8862</a></div>
+          <div><b data-he="טלפון">Contact</b><a href="tel:+972524328862">+972 52-432-8862</a></div>
           <div><b>Email</b><a href="mailto:benkessler100@gmail.com">benkessler100@gmail.com</a></div>
           <div><b>Instagram</b><a href="https://instagram.com/chenkessler" target="_blank" rel="noopener">@chenkessler</a></div>
         </div>
@@ -665,7 +925,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">לוטם</span><span class="lat">Lottem · Short documentary · 3 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">לוטם</span><span class="ltr-name">Lottem</span><span class="lat">Short documentary · 3 min</span></h3>
         <div>
           <p>A short documentary I wrote, directed and cut.</p>
           <div class="roles"><span>Director</span><span>Script</span><span>Editor</span></div>
@@ -679,7 +939,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">שלום, אבא</span><span class="lat">Shalom, Aba · Short film · 10 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">שלום, אבא</span><span class="ltr-name">Shalom, Aba</span><span class="lat">Short film · 10 min</span></h3>
         <div>
           <p>A ten-minute short. I ran the camera, graded the film and built its sound.</p>
           <div class="roles"><span>Camera chief</span><span>Colour grading</span><span>Sound design</span></div>
@@ -694,7 +954,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">קקטוסים</span><span class="lat">Kaktusim · Short film · 6 min · subtitled</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">קקטוסים</span><span class="ltr-name">Kaktusim</span><span class="lat">Short film · 6 min · subtitled</span></h3>
         <div>
           <p>Final cut with subtitles. Six minutes, one thread, nowhere to hide a weak frame.</p>
           <div class="roles"><span>Camera chief</span><span>Colour grading</span></div>
@@ -708,7 +968,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">אות קין</span><span class="lat">Ot Kayin · Short film · 7 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">אות קין</span><span class="ltr-name">Ot Kayin</span><span class="lat">Short film · 7 min</span></h3>
         <div>
           <p>Seven minutes graded in DaVinci Resolve — building the film's contrast and palette out of the raw material.</p>
           <div class="roles"><span>Colour grading</span></div>
@@ -723,7 +983,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">ערכים ומדליות</span><span class="lat">Erachim U'Medaliot · Short film · 10 min</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">ערכים ומדליות</span><span class="ltr-name">Erachim U'Medaliot</span><span class="lat">Short film · 10 min</span></h3>
         <div>
           <p>Cut, graded and sound-designed end to end.</p>
           <div class="roles"><span>Editor</span><span>Colour grading</span><span>Sound design</span></div>
@@ -749,7 +1009,7 @@ section{position:relative}
 <section class="paper" id="brand">
   <div class="wrap">
     <div class="head rv">
-      <h2 class="dsp">Brand<br />Films</h2>
+      <h2 class="dsp" data-he="סרטי<br />תדמית">Brand<br />Films</h2>
       <span class="sub">Concept to delivery</span>
     </div>
 
@@ -804,7 +1064,7 @@ section{position:relative}
 <section class="paper" id="music">
   <div class="wrap">
     <div class="head rv">
-      <h2 class="dsp">Music<br />&amp; Live</h2>
+      <h2 class="dsp" data-he="מוזיקה<br />ולייב">Music<br />&amp; Live</h2>
       <span class="sub">Clips · Shows · Dance</span>
     </div>
 
@@ -823,7 +1083,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">דור שמר</span><span class="lat">Dor Shemer · Tmuna Bli Shem · Music video · 3:31</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">דור שמר</span><span class="ltr-name">Dor Shemer</span><span class="lat">Tmuna Bli Shem · Music video · 3:31</span></h3>
         <p>Shot, cut and graded to sit with the record.</p>
       </div>
       <div class="vid player ar-169" data-src="assets/v3/video/dor-shemer.mp4">
@@ -834,7 +1094,7 @@ section{position:relative}
 
     <article class="piece rv">
       <div class="piece-head">
-        <h3 class="dsp"><span class="he" lang="he" dir="rtl">מאיה</span><span class="lat">Maya · Song teaser · 0:31</span></h3>
+        <h3 class="dsp"><span class="he" lang="he" dir="rtl">מאיה</span><span class="ltr-name">Maya</span><span class="lat">Song teaser · 0:31</span></h3>
         <p>A song teaser cut wide and vertical from the same shoot.</p>
       </div>
       <div class="vid player ar-169" data-src="assets/v3/video/maya-wide.mp4">
@@ -884,7 +1144,7 @@ section{position:relative}
 <!-- ============ BRANDS ============ -->
 <section class="paper">
   <div class="wrap collab rv">
-    <h2 class="dsp">Brands<br />I worked<br />with</h2>
+    <h2 class="dsp" data-he="מותגים<br />שעבדתי<br />איתם">Brands<br />I worked<br />with</h2>
     <div class="logos" id="logos"></div>
   </div>
 </section>
@@ -893,12 +1153,15 @@ section{position:relative}
 
 <!-- ============ CONTACT ============ -->
 <footer class="foot" id="contact">
-  <img class="px" data-px="0.16" src="assets/v3/img/travel/travel-27.jpg" alt="" />
+  <picture>
+    <source srcset="assets/v3/img/travel/travel-27.webp" type="image/webp" />
+    <img class="px" data-px="0.16" src="assets/v3/img/travel/travel-27.jpg" loading="lazy" decoding="async" alt="" />
+  </picture>
   <div class="veil"></div>
   <div class="in wrap">
     <h2 class="dsp">Let's collaborate</h2>
     <div class="rows">
-      <span>Contact</span>
+      <span data-he="יצירת קשר">Contact</span>
       <a href="tel:+972524328862">+972 52-432-8862</a>
       <a href="mailto:benkessler100@gmail.com">benkessler100@gmail.com</a>
       <a href="https://wa.me/972524328862" target="_blank" rel="noopener">WhatsApp</a>
@@ -921,6 +1184,253 @@ section{position:relative}
 
 <script>
 (function () {
+  /* ==========================================================================
+     LANGUAGE
+     Hebrew is keyed off the *English text itself* rather than an id on every
+     element, so the markup stays readable and a string that repeats — "Colour
+     grading" appears four times — only needs translating once. Elements whose
+     inner markup matters (a <br>, an <em>) carry an explicit data-he instead,
+     and that always wins.
+
+     Original text nodes are cached on first pass, so switching back to English
+     restores the real source rather than a back-translation.
+     ========================================================================== */
+  var HE = {
+    /* --- nav / chrome --- */
+    'Chen Kessler — Tel Aviv': 'חן קסלר — תל אביב',
+    'Films': 'סרטים',
+    'Music': 'מוזיקה',
+    'Stills': 'סטילס',
+    'Available for work': 'פנוי לעבודה',
+    'By Chen Kessler · Filmmaker & Photographer': 'חן קסלר · יוצר סרטים וצלם',
+
+    /* --- statement / profile --- */
+    'Filmmaker, videographer and colourist based in Tel Aviv, studying at the Sam Spiegel Film & Television School in Jerusalem. Five short films behind the camera, in the edit and on the grade; brand films and music work for clients across the country; and stills from the road.':
+      'יוצר סרטים, צלם וידאו וקולוריסט מתל אביב, לומד בבית הספר לקולנוע וטלוויזיה סם שפיגל בירושלים. חמישה סרטים קצרים מאחורי המצלמה, בעריכה ובחדר הקולור; סרטי תדמית ועבודות מוזיקה ללקוחות בכל הארץ; וסטילס מהדרך.',
+    'Hey!': 'היי!',
+    "I'm Chen Kessler — a filmmaker, videographer and colourist based in Tel Aviv, studying at the Sam Spiegel Film & Television School in Jerusalem. I work across the whole chain: camera, edit, colour and sound design on short films, and concept-to-delivery on brand and music work.":
+      'אני חן קסלר — יוצר סרטים, צלם וידאו וקולוריסט מתל אביב, לומד בבית הספר לקולנוע וטלוויזיה סם שפיגל בירושלים. אני עובד על כל השרשרת: צילום, עריכת וידאו, קולור ועיצוב פס קול בסרטים קצרים, ומקונספט ועד מסירה בעבודות תדמית ומוזיקה.',
+
+    /* --- profile columns --- */
+    'Film Credits': 'קרדיטים בסרטים',
+    'Commercial': 'עבודות מסחריות',
+    'Education': 'השכלה',
+    'Skills / Tools': 'כלים ותוכנות',
+    'Information': 'פרטים',
+    'Camera chief · Colour grading · Sound design': 'צלם ראשי · קולור · עיצוב פס קול',
+    'Editor · Colour grading · Sound design': 'עריכה · קולור · עיצוב פס קול',
+    'Camera chief · Colour grading': 'צלם ראשי · קולור',
+    'Director · Script · Editor': 'בימוי · תסריט · עריכה',
+    'Brand films': 'סרטי תדמית',
+    'Event planning · Restaurant · Motorsport': 'הפקת אירועים · מסעדנות · מוטורספורט',
+    'Music & live': 'מוזיקה ולייב',
+    'Music videos, artist reels, live coverage, dance': 'קליפים, ריאלים לאמנים, צילומי הופעות, מחול',
+    'Fashion & product': 'אופנה ומוצר',
+    'Campaign stills and vertical film': 'סטילס לקמפיין ווידאו אנכי',
+    'Studio and available light': 'סטודיו ואור טבעי',
+    'Sam Spiegel Film & Television School': 'בית הספר לקולנוע וטלוויזיה סם שפיגל',
+    'Jerusalem — currently studying': 'ירושלים — לומד שם כרגע',
+    'Based': 'מיקום',
+    'Tel Aviv, Israel': 'תל אביב, ישראל',
+    'Email': 'אימייל',
+    'Instagram': 'אינסטגרם',
+
+    /* --- films --- */
+    'Camera · Edit · Colour · Sound': 'צילום · עריכה · קולור · סאונד',
+    'Short documentary · 3 min': 'דוקומנטרי קצר · 3 דק׳',
+    'A short documentary I wrote, directed and cut.': 'סרט דוקומנטרי קצר שכתבתי, ביימתי וערכתי.',
+    'Short film · 10 min': 'סרט קצר · 10 דק׳',
+    'A ten-minute short. I ran the camera, graded the film and built its sound.':
+      'סרט קצר באורך עשר דקות. הייתי הצלם הראשי, עשיתי את הקולור ובניתי את פס הקול.',
+    'Short film · 6 min · subtitled': 'סרט קצר · 6 דק׳ · עם כתוביות',
+    'Final cut with subtitles. Six minutes, one thread, nowhere to hide a weak frame.':
+      'הגרסה הסופית עם כתוביות. שש דקות, קו סיפור אחד, ואין איפה להחביא פריים חלש.',
+    'Short film · 7 min': 'סרט קצר · 7 דק׳',
+    "Seven minutes graded in DaVinci Resolve — building the film's contrast and palette out of the raw material.":
+      'שבע דקות של קולור ב-DaVinci Resolve — בניית הקונטרסט והפלטה של הסרט מתוך החומר הגולמי.',
+    'Cut, graded and sound-designed end to end.': 'עריכה, קולור ועיצוב פס קול מההתחלה ועד הסוף.',
+    'Director': 'בימוי',
+    'Script': 'תסריט',
+    'Editor': 'עריכה',
+    'Camera chief': 'צלם ראשי',
+    'Colour grading': 'קולור',
+    'Sound design': 'עיצוב פס קול',
+    'Personal': 'אישי',
+    'Micro-films shot on film sets': 'סרטונים קצרים שצולמו על סטים',
+    'Short exercises, one idea each — a movement, an edit, a look.':
+      'תרגילים קצרים, רעיון אחד לכל סרטון — תנועה, עריכה, לוק.',
+
+    /* --- brand films --- */
+    'Concept to delivery': 'מקונספט ועד מסירה',
+    'Racing Championship': 'אליפות מרוצים',
+    'Brand film · 0:34': 'סרט תדמית · 0:34',
+    'Track coverage cut into a short championship piece.': 'צילומים מהמסלול שנערכו לסרטון אליפות קצר.',
+    'Vertical brand films': 'סרטי תדמית אנכיים',
+    'Built for the feed — a chef at the pass, and a jewellery brand on location.':
+      'נבנו לפיד — שף מול הכיריים, ומותג תכשיטים בלוקיישן.',
+    'Event Planner': 'הפקת אירועים',
+    'Brand film · 1:40': 'סרט תדמית · 1:40',
+    'A full brand film made end to end — concept, shoot, edit and grade.':
+      'סרט תדמית מלא מקצה לקצה — קונספט, צילום, עריכה וקולור.',
+    'Fashion': 'אופנה',
+    'Chicode · Campaign stills': 'Chicode · סטילס לקמפיין',
+    'Campaign stills — streetwear shot on the street, in the light it was made for.':
+      'סטילס לקמפיין — סטריטוור שצולם ברחוב, באור שבשבילו הוא נועד.',
+
+    /* --- music & live --- */
+    'Clips · Shows · Dance': 'קליפים · הופעות · מחול',
+    'Dan Odiz': 'דן אודיז',
+    'Dance performance · 1:29': 'מופע מחול · 1:29',
+    'A full performance shot and cut for the stage — plus stills from the live shows.':
+      'מופע שלם שצולם ונערך לבמה — יחד עם סטילס מההופעות.',
+    'Tmuna Bli Shem · Music video · 3:31': 'תמונה בלי שם · קליפ · 3:31',
+    'Shot, cut and graded to sit with the record.': 'צולם, נערך ועבר קולור כדי להתלבש על השיר.',
+    'Song teaser · 0:31': 'טיזר לשיר · 0:31',
+    'A song teaser cut wide and vertical from the same shoot.':
+      'טיזר לשיר, בגרסה רחבה ובגרסה אנכית, מאותו יום צילום.',
+
+    /* --- stills --- */
+    'Portrait · Travel': 'פורטרט · מסעות',
+    'Portrait': 'פורטרט',
+    'Studio & available light': 'סטודיו ואור טבעי',
+    'Faces, window light, and as little setup as the frame allows.':
+      'פנים, אור חלון, וכמה שפחות סטאפ שאפשר.',
+    'Travel': 'מסעות',
+    'Asia · eight months · 2024': 'אסיה · שמונה חודשים · 2024',
+    'Eight months across Asia with a camera and no brief — drone films over the Mongolian steppe, and the stills that keep the commercial eye honest.':
+      'שמונה חודשים ברחבי אסיה עם מצלמה ובלי בריף — צילומי רחפן מעל הערבה המונגולית, והסטילס ששומרים את העין המסחרית חדה.',
+
+    /* --- video captions --- */
+    'Master grill': 'מאסטר גריל',
+    'Malka jewelry': 'מלכה תכשיטים',
+    'Maya — vertical cut': 'מאיה — גרסה אנכית',
+    'Mongolia — the steppe': 'מונגוליה — הערבה',
+    'Mongolia — the lake': 'מונגוליה — האגם',
+    'Mongolia — green valley': 'מונגוליה — העמק הירוק',
+    'Japan — video postcard': 'יפן — גלויה מצולמת',
+
+    /* --- footer --- */
+    "Let's collaborate": 'בואו נעבוד יחד',
+    'Chen Kessler — Filmmaker & Photographer, Tel Aviv': 'חן קסלר — יוצר סרטים וצלם, תל אביב',
+    'Portfolio 2026': 'פורטפוליו 2026'
+  };
+
+  /* aria-labels and titles are read aloud, not displayed — they need the same
+     treatment or a Hebrew page announces itself in English. */
+  var HE_ATTR = {
+    'Loading': 'טוען',
+    'Image viewer': 'צפייה בתמונות',
+    'Close': 'סגירה',
+    'Previous': 'הקודם',
+    'Next': 'הבא',
+    'Portrait of Chen Kessler': 'פורטרט של חן קסלר',
+    'Sony FX3 cinema rig, lens down': 'מצלמת סינמה Sony FX3, עדשה כלפי מטה'
+  };
+
+  var META = {
+    en: {
+      title: 'Chen Kessler — Portfolio / Videographer',
+      desc: 'Chen Kessler — filmmaker, videographer and colourist based in Tel Aviv, studying at Sam Spiegel, Jerusalem. Short films, brand films, music and live, portrait and travel photography.'
+    },
+    he: {
+      title: 'חן קסלר — צלם וידאו, עורך וקולוריסט | תל אביב',
+      desc: 'חן קסלר — יוצר סרטים, צלם וידאו וקולוריסט מתל אביב, סטודנט בסם שפיגל. סרטים קצרים, סרטי תדמית, קליפים, צילום פורטרט וצילומי מסע. פנוי לעבודה בכל הארץ.'
+    }
+  };
+
+  /* Priority: ?lang → saved choice → browser language → English. */
+  var LANG = (function () {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'he' || q === 'en') { return q; }
+    var saved = null;
+    try { saved = localStorage.getItem('ck-lang'); } catch (e) {}
+    if (saved === 'he' || saved === 'en') { return saved; }
+    return (navigator.language || '').toLowerCase().indexOf('he') === 0 ? 'he' : 'en';
+  })();
+
+  var cache = new Map();   // text node → its original English
+
+  var walkText = function (lang) {
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || !n.nodeValue.trim()) { return NodeFilter.FILTER_REJECT; }
+        var p = n.parentNode, tag = p && p.nodeName;
+        if (tag === 'SCRIPT' || tag === 'STYLE') { return NodeFilter.FILTER_REJECT; }
+        // an element with data-he owns its whole subtree
+        if (p && p.closest && p.closest('[data-he]')) { return NodeFilter.FILTER_REJECT; }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var n;
+    while ((n = w.nextNode())) {
+      if (!cache.has(n)) { cache.set(n, n.nodeValue); }
+      var src = cache.get(n), key = src.trim();
+      if (lang === 'he' && HE[key]) {
+        n.nodeValue = src.replace(key, HE[key]);
+      } else {
+        n.nodeValue = src;
+      }
+    }
+  };
+
+  var walkAttrs = function (lang) {
+    ['aria-label', 'title', 'alt'].forEach(function (attr) {
+      document.querySelectorAll('[' + attr + ']').forEach(function (el) {
+        // gallery alts are generated from ALT/ALTX below, not translated here
+        if (el.dataset.altkey !== undefined) { return; }
+        var store = 'ck' + attr.replace(/-/g, '');
+        if (el.dataset[store] === undefined) { el.dataset[store] = el.getAttribute(attr); }
+        var src = el.dataset[store];
+        el.setAttribute(attr, (lang === 'he' && HE_ATTR[src]) ? HE_ATTR[src] : src);
+      });
+    });
+  };
+
+  var setLang = function (lang, push) {
+    LANG = lang;
+    var rtl = lang === 'he';
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-he]').forEach(function (el) {
+      if (el.dataset.ckEn === undefined) { el.dataset.ckEn = el.innerHTML; }
+      el.innerHTML = rtl ? el.dataset.he : el.dataset.ckEn;
+    });
+
+    walkText(lang);
+    walkAttrs(lang);
+
+    // gallery alt text is generated, so re-derive it rather than caching strings
+    document.querySelectorAll('img[data-altkey]').forEach(function (img) {
+      var t = altFor(img.dataset.altkey, +img.dataset.altn);
+      if (t) { img.setAttribute('alt', t.replace(/&quot;/g, '"')); }
+    });
+
+    document.title = META[lang].title;
+    var d = document.querySelector('meta[name="description"]');
+    if (d) { d.setAttribute('content', META[lang].desc); }
+    var ogd = document.querySelector('meta[property="og:description"]');
+    if (ogd) { ogd.setAttribute('content', META[lang].desc); }
+
+    // canonical and og:url must follow the active language, or both versions
+    // claim the same URL and Google keeps only one of them.
+    var url = 'https://chenkessler.com/' + (rtl ? '?lang=he' : '');
+    var can = document.querySelector('link[rel="canonical"]');
+    if (can) { can.setAttribute('href', url); }
+    var ogu = document.querySelector('meta[property="og:url"]');
+    if (ogu) { ogu.setAttribute('content', url); }
+
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+
+    try { localStorage.setItem('ck-lang', lang); } catch (e) {}
+    if (push) {
+      history.replaceState(null, '', rtl ? '?lang=he' : location.pathname);
+    }
+  };
+
   /* ---- loading screen ----
      Counts the hero's own assets rather than waiting on window.load, which on
      this page would sit behind every lazy image and poster on a 24k-pixel-tall
@@ -930,7 +1440,16 @@ section{position:relative}
     var el = document.getElementById('load');
     if (!el) { return; }
     var bar = el.querySelector('.lbar span'), pct = el.querySelector('.pct');
-    var critical = ['assets/v3/img/camera-rig.png', 'assets/v3/img/chen-portrait.jpg'];
+    // These must be the exact files <picture> will pick, or the splash warms a
+    // 713KB PNG the page then never displays.
+    var webpOK = (function () {
+      var c = document.createElement('canvas');
+      return !!(c.getContext && c.getContext('2d')) &&
+             c.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    })();
+    var critical = webpOK
+      ? ['assets/v3/img/camera-rig.webp', 'assets/v3/img/chen-portrait.webp']
+      : ['assets/v3/img/camera-rig.png', 'assets/v3/img/chen-portrait.jpg'];
     var done = 0, total = critical.length + 1;          // +1 for the fonts
     var tick = function () {
       done++;
@@ -966,8 +1485,77 @@ section{position:relative}
   var IMG = 'assets/v3/img/';
   var VID = 'assets/v3/video/';
 
-  var figure = function (src, ar) {
-    return '<figure class="shot ' + ar + '"><img loading="lazy" decoding="async" src="' + src + '" alt="" /></figure>';
+  /* ---- alt text ----
+     Every still on this page is injected by the code below, and each one used to
+     ship `alt=""`. For a photographer that forfeits image search entirely, so
+     each set carries a description here instead.
+
+     ALT  — the base sentence for a folder, in both languages.
+     ALTX — a per-frame override, keyed `folder/prefix-NN`. Adding one is a
+            single line; anything without an override falls back to the base.
+     Alt text is re-applied on language switch, so the Hebrew page describes its
+     images in Hebrew. */
+  var ALT = {
+    'portrait/portrait': {
+      en: 'Portrait photography by Chen Kessler',
+      he: 'צילום פורטרט מאת חן קסלר'
+    },
+    'travel/travel': {
+      en: 'Travel photograph from eight months across Asia, by Chen Kessler',
+      he: 'צילום מסע משמונה חודשים ברחבי אסיה, מאת חן קסלר'
+    },
+    'fashion/fashion': {
+      en: 'Chicode streetwear campaign still, shot on location by Chen Kessler',
+      he: 'סטילס מקמפיין הסטריטוור של Chicode, בצילום חן קסלר'
+    },
+    'live/live': {
+      en: 'Live show still from a Dan Odiz dance performance, by Chen Kessler',
+      he: 'סטילס מהופעה חיה של מופע המחול של דן אודיז, מאת חן קסלר'
+    },
+    'film-shalom-aba/shalom-aba': {
+      en: 'Frame from the short film "Shalom, Aba" — camera and colour by Chen Kessler',
+      he: 'פריים מתוך הסרט הקצר "שלום, אבא" — צילום וקולור: חן קסלר'
+    },
+    'film-ot-kayin/ot-kayin': {
+      en: 'Frame from the short film "Ot Kayin" — colour grading by Chen Kessler',
+      he: 'פריים מתוך הסרט הקצר "אות קין" — קולור: חן קסלר'
+    }
+  };
+
+  var ALTX = {
+    'portrait/portrait-01': { en: 'Portrait of Maya, available light', he: 'פורטרט של מאיה, אור טבעי' },
+    'portrait/portrait-02': { en: 'Portrait of Maya, available light', he: 'פורטרט של מאיה, אור טבעי' },
+    'portrait/portrait-03': { en: 'Portrait of Maya, available light', he: 'פורטרט של מאיה, אור טבעי' },
+    'portrait/portrait-04': { en: 'Portrait of Maya, available light', he: 'פורטרט של מאיה, אור טבעי' },
+    'portrait/portrait-05': { en: 'Studio portrait of Ron Sabri', he: 'פורטרט סטודיו של רון סברי' },
+    'portrait/portrait-06': { en: 'Studio portrait of Ron Sabri', he: 'פורטרט סטודיו של רון סברי' },
+    'portrait/portrait-07': { en: 'Studio portrait of Ron Sabri', he: 'פורטרט סטודיו של רון סברי' },
+    'portrait/portrait-08': { en: 'Studio portrait of Ron Sabri', he: 'פורטרט סטודיו של רון סברי' },
+    'portrait/portrait-09': { en: 'Studio portrait of Ron Sabri', he: 'פורטרט סטודיו של רון סברי' }
+  };
+
+  var altFor = function (key, n) {
+    var id = key + '-' + pad(n);
+    var hit = ALTX[id] || ALT[key];
+    if (!hit) { return ''; }
+    return (hit[LANG] || hit.en).replace(/"/g, '&quot;');
+  };
+
+  /* Every still ships as a WebP twin next to the original (tools/build-webp.py),
+     which is ~60% lighter across this set. <picture> is what lets us take that
+     win without dropping browsers that cannot decode WebP — they simply fall
+     through to the <img> source, which is the file that was always there. */
+  var picture = function (src, attrs, alt) {
+    var webp = src.replace(/\.(jpe?g|png)$/i, '.webp');
+    return '<picture><source srcset="' + webp + '" type="image/webp" />' +
+           '<img ' + attrs + ' src="' + src + '" alt="' + alt + '" /></picture>';
+  };
+
+  var figure = function (src, ar, key, n) {
+    return '<figure class="shot ' + ar + '">' +
+           picture(src, 'loading="lazy" decoding="async" data-altkey="' + key + '" data-altn="' + n + '"',
+                   altFor(key, n)) +
+           '</figure>';
   };
 
   /* ---- `data-seq="folder/prefix|1-8"` → a contiguous run of stills ---- */
@@ -977,7 +1565,7 @@ section{position:relative}
     var range = bits[1].split('-');
     var ar = grid.dataset.ar || 'ar-34', html = '';
     for (var i = +range[0]; i <= +range[1]; i++) {
-      html += figure(IMG + path[0] + '/' + path[1] + '-' + pad(i) + '.jpg', ar);
+      html += figure(IMG + path[0] + '/' + path[1] + '-' + pad(i) + '.jpg', ar, bits[0], i);
     }
     grid.innerHTML = html;
   });
@@ -988,7 +1576,7 @@ section{position:relative}
     var path = bits[0].split('/');
     var ar = grid.dataset.ar || 'ar-34';
     grid.innerHTML = bits[1].split(',').map(function (n) {
-      return figure(IMG + path[0] + '/' + path[1] + '-' + pad(+n) + '.jpg', ar);
+      return figure(IMG + path[0] + '/' + path[1] + '-' + pad(+n) + '.jpg', ar, bits[0], +n);
     }).join('');
   });
 
@@ -1001,7 +1589,9 @@ section{position:relative}
       var t = item.split(':'), n = +t[0], ar = t[1];
       var src = IMG + path[0] + '/' + path[1] + '-' + pad(n) + '.jpg';
       return '<figure class="shot" data-ar="' + ar + '">' +
-             '<img loading="lazy" decoding="async" src="' + src + '" alt="" /></figure>';
+             picture(src, 'loading="lazy" decoding="async" data-altkey="' + bits[0] + '" data-altn="' + n + '"',
+                     altFor(bits[0], n)) +
+             '</figure>';
     }).join('');
   });
 
@@ -1229,7 +1819,10 @@ section{position:relative}
   var show = function (i) {
     shots = Array.prototype.slice.call(document.querySelectorAll('.shot img'));
     idx = (i + shots.length) % shots.length;
-    lbImg.src = shots[idx].src;
+    // currentSrc is whichever file <picture> actually chose, so the lightbox
+    // reuses the WebP already in cache instead of fetching the JPEG twin.
+    lbImg.src = shots[idx].currentSrc || shots[idx].src;
+    lbImg.alt = shots[idx].alt || '';
     lb.classList.add('on');
     document.body.style.overflow = 'hidden';
   };
@@ -1334,6 +1927,114 @@ section{position:relative}
       Array.prototype.forEach.call(g.children, function (k) { k.classList.add('in'); });
     });
   }
+
+  /* ==========================================================================
+     VIDEO STRUCTURED DATA
+     Built from the players actually on the page rather than hand-written, so a
+     clip added through data-vid or a new .player block describes itself without
+     anyone remembering to update a second list. Each entry is what makes a film
+     eligible for a video thumbnail in search results.
+     ========================================================================== */
+  (function () {
+    var slot = document.getElementById('ld-videos');
+    if (!slot) { return; }
+    var ORIGIN = 'https://chenkessler.com/';
+
+    /* Real production dates, keyed by the clip's file stem. Anything not listed
+       falls back to the date the site published it — which is honest but weak,
+       so filling these in is worth doing: `uploadDate` is one of the four
+       properties Google requires for a video rich result. */
+    var SHOT_ON = {
+      // 'shalom-aba': '2025-11-04',
+    };
+    var FALLBACK_DATE = '2026-08-15';
+
+    /* Durations are already written in the copy — "· 0:34", "· 3 min" — so read
+       them back out rather than keeping a second list that can drift. */
+    var iso = function (text) {
+      var mmss = text.match(/(\d+):([0-5]\d)(?!\d)/);
+      if (mmss) {
+        var m = +mmss[1], s = +mmss[2];
+        return 'PT' + (m ? m + 'M' : '') + (s ? s + 'S' : '');
+      }
+      var mins = text.match(/(\d+)\s*min\b/i);
+      return mins ? 'PT' + mins[1] + 'M' : null;
+    };
+
+    /* A heading can hold up to three spans — the Hebrew name, the Latin name and
+       the descriptor line — and textContent would run them together. Prefer the
+       romanised name for `name` (it is what a non-Hebrew search matches) and
+       carry the Hebrew as `alternateName`, which is exactly what that property
+       is for. Headings that are English-only have neither span and fall through
+       to their own text. */
+    var nameParts = function (h) {
+      var c = h.cloneNode(true);
+      var lat = c.querySelector('.lat');
+      if (lat) { lat.remove(); }
+      var he = c.querySelector('.he');
+      var ltr = c.querySelector('.ltr-name');
+      var heText = he ? he.textContent.trim() : '';
+      if (he) { he.remove(); }
+      if (ltr) { ltr.remove(); }
+      var rest = c.textContent.trim().replace(/\s+/g, ' ');
+      return {
+        name: (ltr ? ltr.textContent.trim() : '') || rest || heText,
+        he: heText
+      };
+    };
+
+    var seen = {}, items = [];
+
+    document.querySelectorAll('[data-src]').forEach(function (box) {
+      var src = box.dataset.src;
+      var video = box.querySelector('video');
+      if (!src || !video || seen[src]) { return; }
+      seen[src] = 1;
+
+      var art = box.closest('article');
+      var h = art && art.querySelector('.piece-head h3');
+      var tag = box.querySelector('.tag');
+      // a tagged tile is one clip among several under a shared heading, so its
+      // own label names it better than the heading does
+      var parts = h ? nameParts(h) : { name: '', he: '' };
+      var name = tag ? tag.textContent.trim() : parts.name;
+      if (!name) { return; }
+
+      // A tagged tile is its own clip sitting under a shared heading, so the
+      // heading's runtime is not its runtime — "Moonlighting" would otherwise
+      // inherit Maya's 0:31. Only the article's main player may read the .lat.
+      var lat = art && art.querySelector('.piece-head .lat');
+      var dur = tag ? iso(tag.textContent) : iso(lat ? lat.textContent : '');
+      var desc = art && art.querySelector('.piece-head p');
+      var stem = src.split('/').pop().replace(/\.mp4$/, '');
+
+      var item = {
+        '@type': 'VideoObject',
+        name: name,
+        description: (desc ? desc.textContent.trim() : name) + ' — Chen Kessler',
+        thumbnailUrl: ORIGIN + video.getAttribute('poster'),
+        contentUrl: ORIGIN + src,
+        uploadDate: SHOT_ON[stem] || FALLBACK_DATE,
+        creator: { '@id': ORIGIN + '#chen' }
+      };
+      if (dur) { item.duration = dur; }
+      // Only claim a language where the work actually has a Hebrew title.
+      // Several of these are non-verbal, and asserting Hebrew over them is wrong.
+      if (!tag && parts.he) {
+        item.alternateName = parts.he;
+        item.inLanguage = 'he';
+      }
+      items.push(item);
+    });
+
+    slot.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': items });
+  })();
+
+  /* ---- language: wire the toggle, then run the first pass ---- */
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.lang, true); });
+  });
+  setLang(LANG, false);
 })();
 </script>
 </body>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The retired split-gate pages and the old redirect stub carry no unique content.
+Disallow: /folio.html
+
+Sitemap: https://chenkessler.com/sitemap.xml

@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chen Kessler — Portfolio</title>
 <!-- This page became the homepage on 15 Aug 2026. Anything already pointing at
-     /folio.html keeps working through this redirect. -->
-<link rel="canonical" href="https://benkessler100-bit.github.io/PORTFOLIO/" />
+     /folio.html keeps working through this redirect.
+     noindex matters as much as the canonical here: a meta-refresh stub answers
+     200, not 301, so without it Google is free to treat this as a second page
+     carrying the same content. Amplify has no repo-side redirects file — if you
+     want a real 301, add it under Hosting → Rewrites and redirects. -->
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://chenkessler.com/" />
 <meta http-equiv="refresh" content="0; url=./" />
 <script>location.replace('./');</script>
 <style>

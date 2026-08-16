@@ -72,6 +72,11 @@ for f in sorted(os.listdir(src)):
     print(slug)
 PY
 
+# The page serves stills through <picture>, so every JPEG/PNG written above needs
+# its WebP twin or the browser silently falls back to the heavy original.
+echo "=== webp ==="
+python3 "$(dirname "$0")/build-webp.py"
+
 echo "=== counts ==="
 for d in "$OUT"/*/; do printf "%-28s %s\n" "$(basename "$d")" "$(ls "$d" | wc -l | tr -d ' ')"; done
 du -sh "$OUT"
